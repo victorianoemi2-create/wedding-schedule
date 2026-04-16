@@ -142,11 +142,7 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
       <div class="sdot spin" id="sdot"></div>
       <span id="smsg">Paste your Apps Script URL to connect Google Sheets</span>
     </div>
-    <div id="url-wrap">
-      <label>Apps Script URL:</label>
-      <input type="text" id="url-input" placeholder="https://script.google.com/macros/s/…/exec">
-      <button id="url-btn" onclick="saveUrl()">Save &amp; Connect</button>
-    </div>
+
   </div>
 
   <div class="cd" id="cd"></div>
@@ -262,7 +258,7 @@ const PHASES=[
   ]},
 ];
 
-let SURL=localStorage.getItem('ws_url')||'';
+let SURL='https://script.google.com/macros/s/AKfycbzqLc-WqHhgfRrkgGGh8gbq0lC7FhiwzLYA44lejN5psgUp54SAgpkWyHplvIcc9UQB2Q/exec';
 let statuses={};
 let syncOk=false;
 let curF='all',curS='';
@@ -286,11 +282,7 @@ function setSS(state,msg){
   document.getElementById('smsg').textContent=msg;
   syncOk=state==='ok';
 }
-function saveUrl(){
-  SURL=document.getElementById('url-input').value.trim();
-  localStorage.setItem('ws_url',SURL);
-  loadStatuses();
-}
+
 async function loadStatuses(){
   if(!SURL){setSS('err','No URL saved — paste your Apps Script URL and click Save & Connect');return;}
   setSS('spin','Loading from Google Sheets…');
@@ -327,9 +319,7 @@ function tk(phase,task){return phase.l+'|'+task.n;}
 
 /* init */
 function init(){
-  renderCD();buildTable();updateStats();
-  if(SURL){document.getElementById('url-input').value=SURL;loadStatuses();}
-  else setSS('err','No URL saved — paste your Apps Script URL above and click Save & Connect');
+  renderCD();buildTable();updateStats();loadStatuses();
 }
 
 function renderCD(){
