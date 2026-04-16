@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Schedule — Devin & Victoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --burg:#6B2737;--gold:#B8860B;--taupe:#C4B49A;--cream:#FAF6F0;
+  --mauve:#9E7B8A;--lt:#EDE6DA;--dark:#2C2C2C;
+  --pay:#C0392B;--pay-lt:#FADBD8;
+  --rsvp:#1A6B6B;--rsvp-lt:#D5EDE8;
+  --diy:#B8860B;--diy-lt:#FFF3CC;
+  --con:#9E7B8A;--con-lt:#EDE6DA;
+}
+html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark)}
+
+/* ── GATE ── */
+#gate{
+  position:fixed;inset:0;z-index:999;background:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  transition:opacity .4s;
+}
+#gate h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--burg);letter-spacing:.04em;text-align:center}
+#gate .sub{font-size:.75rem;color:var(--mauve);letter-spacing:.14em;text-transform:uppercase;margin-top:-8px}
+#gate .field-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px}
+#gate input[type=password]{
+  width:240px;padding:10px 16px;border:1px solid var(--taupe);border-radius:4px;
+  font-family:'Jost',sans-serif;font-size:.9rem;background:#fff;color:var(--dark);
+  outline:none;text-align:center;letter-spacing:.1em;
+}
+#gate input[type=password]:focus{border-color:var(--burg)}
+#gate button{
+  width:240px;padding:10px;background:var(--burg);color:#fff;border:none;
+  border-radius:4px;font-family:'Jost',sans-serif;font-size:.85rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;
+}
+#gate button:hover{background:#55202c}
+#gate .err{font-size:.78rem;color:var(--pay);height:16px;letter-spacing:.05em}
+#gate .ornament{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--taupe);letter-spacing:.3em}
+
+/* ── APP ── */
+#app{display:none;flex-direction:column;min-height:100vh}
+
+/* header */
+.site-header{background:var(--burg);padding:22px 32px 16px;text-align:center}
+.site-header h1{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#fff;letter-spacing:.06em}
+.site-header .sub{font-size:.75rem;color:var(--taupe);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+
+/* countdown */
+.countdown{background:var(--lt);border-bottom:1px solid var(--taupe);padding:12px 24px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.cd-item{text-align:center}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--burg);font-weight:600;line-height:1}
+.cd-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mauve);margin-top:2px}
+
+/* stats */
+.stats{background:#fff;border-bottom:1px solid var(--lt);padding:10px 24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.stat{font-size:.78rem;color:var(--mauve)}
+.stat b{font-size:1rem;font-weight:600;color:var(--dark);margin-right:4px}
+.stat b.red{color:var(--pay)}
+.stat b.green{color:#1E6B3C}
+.stat b.gold{color:var(--gold)}
+
+/* controls */
+.controls{background:#fff;border-bottom:1px solid var(--lt);padding:12px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.flbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);margin-right:2px}
+.btn{padding:5px 14px;border-radius:20px;border:1px solid var(--taupe);background:transparent;font-family:'Jost',sans-serif;font-size:.75rem;cursor:pointer;color:var(--dark);transition:all .15s}
+.btn:hover{background:var(--lt)}
+.btn.on{color:#fff;border-color:transparent}
+.btn.on.all{background:var(--burg)}
+.btn.on.pay{background:var(--pay)}
+.btn.on.rsvp{background:var(--rsvp)}
+.btn.on.diy{background:var(--diy)}
+.btn.on.con{background:var(--mauve)}
+.search{margin-left:auto;padding:5px 14px;border-radius:20px;border:1px solid var(--taupe);font-family:'Jost',sans-serif;font-size:.75rem;background:var(--cream);color:var(--dark);outline:none;width:200px}
+.search:focus{border-color:var(--mauve)}
+
+/* legend */
+.legend{padding:10px 24px;display:flex;gap:16px;flex-wrap:wrap;background:var(--cream);border-bottom:1px solid var(--lt)}
+.leg{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mauve)}
+.swatch{width:14px;height:10px;border-radius:2px}
+.diamond{width:9px;height:9px;transform:rotate(45deg);border-radius:1px}
+
+/* table area */
+.table-wrap{overflow-x:auto;flex:1}
+table{width:100%;border-collapse:collapse;min-width:860px}
+thead th{
+  font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--mauve);padding:8px 10px;border-bottom:1px solid var(--lt);
+  white-space:nowrap;background:#fff;position:sticky;top:0;z-index:2;text-align:left
+}
+.th-bar{width:100%}
+
+/* phase row */
+.ph-row td{
+  background:var(--lt);font-size:.68rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mauve);padding:7px 10px;
+  border-top:1px solid var(--taupe)
+}
+
+/* task rows */
+.t-row td{padding:6px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
+.t-row.hidden{display:none}
+.t-row:hover td{background:#F7F3EE}
+.t-name{font-size:.82rem;max-width:210px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-name.wd{font-weight:600;color:var(--burg)}
+
+/* badge */
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.68rem;font-weight:600;white-space:nowrap}
+.bp{background:var(--pay-lt);color:#922B21}
+.br{background:var(--rsvp-lt);color:#0E4D4D}
+.bd{background:var(--diy-lt);color:#5D4200}
+.bc{background:var(--con-lt);color:#5C1F2E}
+
+/* gantt bar cell */
+.bar-cell{position:relative;padding:4px 0;min-width:400px}
+.bar-wrap{position:relative;width:100%;height:20px}
+.bar{position:absolute;height:14px;top:3px;border-radius:3px;cursor:default;transition:opacity .15s}
+.bar:hover{opacity:.75}
+.bar-lbl{position:absolute;font-size:.65rem;white-space:nowrap;top:4px;color:#fff;pointer-events:none;font-weight:500;padding-left:4px}
+.milestone-diamond{position:absolute;width:11px;height:11px;top:4px;transform:rotate(45deg);border-radius:1px}
+.today-line{position:absolute;top:0;bottom:0;width:1.5px;background:var(--pay);opacity:.55;z-index:1}
+.today-lbl{position:absolute;top:-14px;font-size:.6rem;color:var(--pay);transform:translateX(-50%);font-weight:600;white-space:nowrap}
+.grid-line{position:absolute;top:0;bottom:0;width:.5px;background:#DDD6CC}
+
+/* month ruler */
+.ruler-row td{padding:0;background:#fff;border-bottom:1px solid var(--lt)}
+.ruler-inner{position:relative;height:22px;margin-left:323px}
+.m-tick{position:absolute;transform:translateX(-50%);font-size:.6rem;color:var(--mauve);white-space:nowrap;top:4px}
+.m-tick.yr{font-weight:600;color:var(--burg)}
+
+/* status dropdown */
+.status-sel{
+  border:.5px solid var(--taupe);border-radius:10px;padding:2px 6px;
+  font-family:'Jost',sans-serif;font-size:.7rem;background:var(--cream);
+  color:var(--dark);cursor:pointer;outline:none
+}
+.status-sel.done{background:#D5F0E0;color:#1E6B3C;border-color:#1E6B3C}
+
+/* footer */
+footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;color:var(--taupe);letter-spacing:.1em}
+
+@media(max-width:640px){
+  .site-header h1{font-size:1.4rem}
+  .countdown{gap:20px}
+  .controls{padding:10px 12px}
+  .stats{padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="ornament">✦ ✦ ✦</div>
+  <h1>Devin &amp; Victoria</h1>
+  <p class="sub">Wedding Planning Schedule</p>
+  <div class="field-wrap">
+    <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')unlock()">
+    <button onclick="unlock()">Enter</button>
+    <span class="err" id="pw-err"></span>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+
+  <header class="site-header">
+    <h1>Devin &amp; Victoria</h1>
+    <p class="sub">Wedding Project Schedule &nbsp;·&nbsp; August 4, 2028 &nbsp;·&nbsp; Rialto Theater, Tampa FL</p>
+  </header>
+
+  <div class="countdown" id="cd"></div>
+  <div class="stats" id="stats"></div>
+
+  <div class="legend">
+    <div class="leg"><div class="swatch" style="background:var(--pay)"></div>Payment due</div>
+    <div class="leg"><div class="swatch" style="background:var(--rsvp)"></div>RSVP / admin</div>
+    <div class="leg"><div class="swatch" style="background:var(--diy)"></div>DIY / creative</div>
+    <div class="leg"><div class="swatch" style="background:var(--con)"></div>Book / confirm</div>
+    <div class="leg"><div class="diamond" style="background:var(--pay)"></div>Key milestone</div>
+    <div class="leg"><div style="width:12px;height:2px;background:var(--pay);opacity:.6"></div>Today</div>
+  </div>
+
+  <div class="controls">
+    <span class="flbl">Filter:</span>
+    <button class="btn on all" onclick="setF('all',this)">All tasks</button>
+    <button class="btn pay" onclick="setF('pay',this)">💰 Payments</button>
+    <button class="btn rsvp" onclick="setF('rsvp',this)">📋 RSVP / Admin</button>
+    <button class="btn diy" onclick="setF('diy',this)">🎨 DIY / Creative</button>
+    <button class="btn con" onclick="setF('con',this)">✅ Book / Confirm</button>
+    <input class="search" type="text" placeholder="Search tasks…" oninput="doSearch(this.value)">
+  </div>
+
+  <div class="table-wrap">
+    <table id="gtable">
+      <thead>
+        <tr>
+          <th style="width:210px">Task</th>
+          <th style="width:110px;text-align:center">Category</th>
+          <th style="width:100px">Due date</th>
+          <th style="width:110px;text-align:center">Status</th>
+          <th class="th-bar">Timeline (Apr 2026 → Aug 2028)</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <footer>Devin &amp; Victoria &nbsp;·&nbsp; August 4, 2028 &nbsp;·&nbsp; Made with love</footer>
+</div>
+
+<script>
+/* ── PASSWORD ── */
+const PW = 'rialto2028';
+function unlock(){
+  const v = document.getElementById('pw-input').value;
+  if(v === PW){
+    const gate = document.getElementById('gate');
+    gate.style.opacity = '0';
+    setTimeout(()=>{ gate.style.display='none'; document.getElementById('app').style.display='flex'; init(); }, 400);
+    sessionStorage.setItem('ws_auth','1');
+  } else {
+    document.getElementById('pw-err').textContent = 'Incorrect password — try again';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-input').focus();
+  }
+}
+if(sessionStorage.getItem('ws_auth')==='1'){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='flex';
+}
+
+/* ── DATA ── */
+const WEDDING = new Date(2028,7,4);
+const TODAY = new Date(); TODAY.setHours(0,0,0,0);
+const T_START = new Date(2026,3,1);
+const T_END   = new Date(2028,8,15);
+const T_SPAN  = T_END - T_START;
+
+const CAT_COLOR = {pay:'#C0392B',rsvp:'#1A6B6B',diy:'#B8860B',con:'#9E7B8A'};
+const CAT_BADGE = {pay:'bp',rsvp:'br',diy:'bd',con:'bc'};
+const CAT_LABEL = {pay:'Payment',rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm'};
+
+const PHASES = [
+  {label:'Now — 18+ months out', tasks:[
+    {n:'Book Rialto Theater — deposit',     cat:'pay', due:'2026-05-15', milestone:true},
+    {n:'Book DJ aheProductions — deposit',  cat:'pay', due:'2026-06-01'},
+    {n:'Book photographer — deposit',       cat:'pay', due:'2026-07-01'},
+    {n:'Book caterer — tasting & contract', cat:'con', due:'2026-07-01'},
+    {n:'Book videographer — deposit',       cat:'pay', due:'2026-08-01'},
+    {n:'Book officiant',                    cat:'con', due:'2026-09-01'},
+    {n:'Book Star Trolley — deposit',       cat:'pay', due:'2026-09-01'},
+    {n:'Book florist — deposit',            cat:'pay', due:'2026-10-01'},
+    {n:'Book hair & makeup — deposit',      cat:'pay', due:'2026-10-01'},
+  ]},
+  {label:'12–18 months out', tasks:[
+    {n:'Book hotel room block',             cat:'con', due:'2026-12-01'},
+    {n:'Finalize guest list (~60 guests)',  cat:'rsvp',due:'2027-01-01'},
+    {n:'Order wedding dress',               cat:'con', due:'2027-01-15', milestone:true},
+    {n:'Save-the-dates — design',           cat:'diy', due:'2027-02-01'},
+    {n:'Save-the-dates — mail',             cat:'rsvp',due:'2027-02-15'},
+    {n:'Wedding website — finalize',        cat:'diy', due:'2027-03-01'},
+    {n:'Book cake/desserts — deposit',      cat:'pay', due:'2027-03-01'},
+  ]},
+  {label:'9–12 months out', tasks:[
+    {n:'Ceremony details with officiant',   cat:'con', due:'2027-05-01'},
+    {n:'Book rehearsal dinner venue',       cat:'con', due:'2027-05-01'},
+    {n:'Invitation suite — design',         cat:'diy', due:'2027-05-15'},
+    {n:'Finalize florals with florist',     cat:'con', due:'2027-06-01'},
+    {n:'Caterer — mid-point payment',       cat:'pay', due:'2027-07-01', milestone:true},
+    {n:'Book honeymoon — flights & hotel',  cat:'con', due:'2027-07-15'},
+  ]},
+  {label:'6–9 months out', tasks:[
+    {n:'Invitation order & proof',          cat:'diy', due:'2027-09-01'},
+    {n:'Order wedding favors',              cat:'diy', due:'2027-11-01'},
+    {n:'Mail invitations',                  cat:'rsvp',due:'2027-12-01'},
+    {n:'RSVP deadline',                     cat:'rsvp',due:'2028-01-15', milestone:true},
+    {n:'Finalize menu with caterer',        cat:'con', due:'2028-01-20'},
+    {n:'Create seating chart',              cat:'diy', due:'2028-02-01'},
+    {n:'Ceremony programs — design',        cat:'diy', due:'2028-02-15'},
+    {n:'Signage & décor elements',          cat:'diy', due:'2028-03-01'},
+    {n:'Final dress fitting',               cat:'con', due:'2028-03-01'},
+    {n:'Hair & makeup trial run',           cat:'con', due:'2028-03-15'},
+  ]},
+  {label:'1–3 months out', tasks:[
+    {n:'All signage & décor — print',       cat:'diy', due:'2028-05-01'},
+    {n:'Venue — final payment',             cat:'pay', due:'2028-05-04', milestone:true},
+    {n:'Caterer — final payment',           cat:'pay', due:'2028-06-01'},
+    {n:'Photographer — final payment',      cat:'pay', due:'2028-06-01'},
+    {n:'Videographer — final payment',      cat:'pay', due:'2028-06-01'},
+    {n:'DJ — final payment',                cat:'pay', due:'2028-06-01'},
+    {n:'Star Trolley — final payment',      cat:'pay', due:'2028-06-01'},
+    {n:'Florist — final payment',           cat:'pay', due:'2028-06-15'},
+    {n:'Apply for marriage license',        cat:'rsvp',due:'2028-07-01', milestone:true},
+    {n:'Confirm all vendors + timeline',    cat:'con', due:'2028-07-01'},
+    {n:'Assemble programs & favors',        cat:'diy', due:'2028-07-15'},
+    {n:'Final headcount to caterer',        cat:'rsvp',due:'2028-07-18'},
+    {n:'Hair & makeup — final payment',     cat:'pay', due:'2028-07-20'},
+    {n:'Cake — final payment',              cat:'pay', due:'2028-07-20'},
+    {n:'Officiant — final payment',         cat:'pay', due:'2028-07-20'},
+  ]},
+  {label:'Wedding week', tasks:[
+    {n:'Wedding rehearsal',                 cat:'con', due:'2028-08-03'},
+    {n:'Rehearsal dinner',                  cat:'con', due:'2028-08-03'},
+    {n:'Pick up florals',                   cat:'con', due:'2028-08-04'},
+    {n:'⭐ WEDDING DAY',                   cat:'con', due:'2028-08-04', milestone:true, wd:true},
+  ]},
+];
+
+/* ── HELPERS ── */
+function pd(s){ const[y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
+function pct(d){ return ((d-T_START)/T_SPAN)*100; }
+function fmtDate(s){ return pd(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+function fmtShort(s){ return pd(s).toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
+
+let statuses = {};
+try{ statuses = JSON.parse(localStorage.getItem('ws_statuses')||'{}'); }catch(e){}
+function saveStatuses(){ try{ localStorage.setItem('ws_statuses', JSON.stringify(statuses)); }catch(e){} }
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+/* ── INIT ── */
+function init(){
+  renderCountdown();
+  buildTable();
+  updateStats();
+}
+
+function renderCountdown(){
+  const total = Math.round((WEDDING-TODAY)/86400000);
+  const months = Math.floor(total/30.44);
+  const weeks  = Math.floor(total/7);
+  document.getElementById('cd').innerHTML = `
+    <div class="cd-item"><div class="cd-num">${total.toLocaleString()}</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-item"><div class="cd-num">${months}</div><div class="cd-lbl">Months</div></div>
+    <div class="cd-item"><div class="cd-num">${weeks.toLocaleString()}</div><div class="cd-lbl">Weeks</div></div>
+  `;
+}
+
+function updateStats(){
+  let total=0, done=0, soon=0, payments=0;
+  PHASES.forEach(ph=>ph.tasks.forEach((t,_)=>{
+    const key = ph.label+'|'+t.n;
+    const days = Math.round((pd(t.due)-TODAY)/86400000);
+    total++;
+    if((statuses[key]||'open')==='done') done++;
+    if(days>=0&&days<=30) soon++;
+    if(t.cat==='pay'&&days>=0&&(statuses[key]||'open')!=='done') payments++;
+  }));
+  document.getElementById('stats').innerHTML=`
+    <div class="stat"><b>${total}</b> Total tasks</div>
+    <div class="stat"><b class="green">${done}</b> Completed</div>
+    <div class="stat"><b class="gold">${soon}</b> Due in 30 days</div>
+    <div class="stat"><b class="red">${payments}</b> Pending payments</div>
+  `;
+}
+
+function buildTable(){
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  const todayP = pct(TODAY);
+
+  // ruler row
+  const rulerTr = document.createElement('tr');
+  rulerTr.className = 'ruler-row';
+  rulerTr.innerHTML = `<td colspan="5"><div class="ruler-inner" id="ruler"></div></td>`;
+  tbody.appendChild(rulerTr);
+
+  // build month ruler
+  setTimeout(()=>{
+    const ruler = document.getElementById('ruler');
+    if(!ruler) return;
+    let d = new Date(T_START);
+    while(d < T_END){
+      const tick = document.createElement('div');
+      tick.className = 'month-tick' + (d.getMonth()===0||d.getTime()===T_START.getTime()?' yr':'');
+      tick.style.left = pct(d)+'%';
+      if(d.getMonth()===0||d.getTime()===T_START.getTime()){
+        tick.textContent = d.toLocaleDateString('en-US',{month:'short',year:'2-digit'});
+      } else if(d.getMonth()%3===0){
+        tick.textContent = d.toLocaleDateString('en-US',{month:'short'});
+      }
+      tick.style.position='absolute';
+      tick.style.transform='translateX(-50%)';
+      tick.style.fontSize='.6rem';
+      tick.style.color = d.getMonth()===0||d.getTime()===T_START.getTime() ? '#6B2737' : '#9E7B8A';
+      tick.style.whiteSpace='nowrap';
+      tick.style.top='3px';
+      ruler.appendChild(tick);
+      d = new Date(d.getFullYear(), d.getMonth()+1, 1);
+    }
+  }, 0);
+
+  PHASES.forEach(phase=>{
+    // phase header
+    const ph = document.createElement('tr');
+    ph.className = 'ph-row';
+    ph.dataset.phase = phase.label;
+    ph.innerHTML = `<td colspan="5">${phase.label.toUpperCase()}</td>`;
+    tbody.appendChild(ph);
+
+    phase.tasks.forEach((task, ti)=>{
+      const key = phase.label+'|'+task.n;
+      const due = pd(task.due);
+      const p = pct(due);
+      const color = CAT_COLOR[task.cat];
+      const status = statuses[key] || 'open';
+      const days = Math.round((due-TODAY)/86400000);
+
+      // bar span: from previous task in phase or phase start
+      let startDate = ti>0 ? pd(phase.tasks[ti-1].due) : T_START;
+      const sp = pct(startDate);
+      const width = Math.max(p-sp, 0.6);
+
+      let barHtml;
+      if(task.milestone){
+        barHtml = `
+          <div class="bar-wrap">
+            <div class="today-line" style="left:${todayP}%"><div class="today-lbl">today</div></div>
+            <div class="milestone-diamond" style="background:${color};left:calc(${p}% - 5px)" title="${task.n}"></div>
+          </div>`;
+      } else {
+        barHtml = `
+          <div class="bar-wrap">
+            <div class="today-line" style="left:${todayP}%"></div>
+            <div class="bar" style="left:${sp}%;width:${width}%;background:${color};opacity:${task.wd?1:.72}"
+              title="${task.n} — ${fmtDate(task.due)}"></div>
+            ${width>7?`<span class="bar-lbl" style="left:calc(${sp}% + 4px)">${fmtShort(task.due)}</span>`:''}
+          </div>`;
+      }
+
+      // due date color
+      const dueClass = days<0 ? 'color:#C0392B;font-weight:600' : days<=60 ? 'color:#B8860B;font-weight:500' : '';
+      const dueText = days<0 ? `${fmtDate(task.due)} <span style="font-size:.65rem;color:#C0392B">(${Math.abs(days)}d overdue)</span>`
+                    : days===0 ? `${fmtDate(task.due)} <span style="font-size:.65rem;color:#C0392B">(TODAY)</span>`
+                    : fmtDate(task.due);
+
+      const opts = ['open','in-progress','done'].map(s=>
+        `<option value="${s}" ${status===s?'selected':''}>${s==='open'?'⬜ Open':s==='in-progress'?'🔄 In Progress':'✅ Done'}</option>`
+      ).join('');
+
+      const tr = document.createElement('tr');
+      tr.className = 'task-row t-row';
+      tr.dataset.cat = task.cat;
+      tr.dataset.phase = phase.label;
+      tr.dataset.search = task.n.toLowerCase();
+      tr.innerHTML = `
+        <td><div class="t-name${task.wd?' wd':''}">${task.n}</div></td>
+        <td style="text-align:center"><span class="badge ${CAT_BADGE[task.cat]}">${CAT_LABEL[task.cat]}</span></td>
+        <td style="font-size:.78rem;white-space:nowrap;${dueClass}">${dueText}</td>
+        <td style="text-align:center">
+          <select class="status-sel${status==='done'?' done':''}" onchange="onStatus(this,'${key}')">
+            ${opts}
+          </select>
+        </td>
+        <td class="bar-cell">${barHtml}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+}
+
+function onStatus(sel, key){
+  statuses[key] = sel.value;
+  saveStatuses();
+  sel.className = 'status-sel' + (sel.value==='done'?' done':'');
+  updateStats();
+}
+
+function setF(f, btn){
+  currentFilter = f;
+  document.querySelectorAll('.btn').forEach(b=>{ b.className = b.className.replace(/ on/g,''); });
+  btn.className += ' on';
+  applyFilters();
+}
+
+function doSearch(v){
+  currentSearch = v.toLowerCase();
+  applyFilters();
+}
+
+function applyFilters(){
+  document.querySelectorAll('.t-row').forEach(tr=>{
+    const catOk = currentFilter==='all' || tr.dataset.cat===currentFilter;
+    const searchOk = !currentSearch || tr.dataset.search.includes(currentSearch);
+    tr.classList.toggle('hidden', !(catOk&&searchOk));
+  });
+  document.querySelectorAll('.ph-row').forEach(ph=>{
+    const rows = document.querySelectorAll(`.t-row[data-phase="${ph.dataset.phase}"]`);
+    ph.style.display = [...rows].some(r=>!r.classList.contains('hidden')) ? '' : 'none';
+  });
+}
+
+if(sessionStorage.getItem('ws_auth')==='1') init();
+</script>
+</body>
+</html>
