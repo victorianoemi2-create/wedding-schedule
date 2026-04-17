@@ -12,11 +12,9 @@
 :root{
   --burg:#6B2737;--gold:#B8860B;--taupe:#C4B49A;--cream:#FAF6F0;
   --mauve:#9E7B8A;--lt:#EDE6DA;--dark:#2C2C2C;
-  --pay:#C0392B;--pay-lt:#FADBD8;
-  --rsvp:#1A6B6B;--rsvp-lt:#D5EDE8;
-  --diy:#B8860B;--diy-lt:#FFF3CC;
-  --con:#9E7B8A;--con-lt:#EDE6DA;
-  --sav:#1A6B6B;
+  --pay:#C0392B;--pay-lt:#FADBD8;--rsvp:#1A6B6B;--rsvp-lt:#D5EDE8;
+  --diy:#B8860B;--diy-lt:#FFF3CC;--con:#9E7B8A;--con-lt:#EDE6DA;
+  --sav:#1A6B6B;--ven:#7D5A9E;--ven-lt:#EDE8F5;
 }
 html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark)}
 
@@ -27,14 +25,14 @@ html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);colo
 #gate .fw{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px}
 #gate input[type=password]{width:240px;padding:10px 16px;border:1px solid var(--taupe);border-radius:4px;font-family:'Jost',sans-serif;font-size:.9rem;background:#fff;color:var(--dark);outline:none;text-align:center;letter-spacing:.1em}
 #gate input[type=password]:focus{border-color:var(--burg)}
-#gate button{width:240px;padding:10px;background:var(--burg);color:#fff;border:none;border-radius:4px;font-family:'Jost',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+#gate button{width:240px;padding:10px;background:var(--burg);color:#fff;border:none;border-radius:4px;font-family:'Jost',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 #gate button:hover{background:#55202c}
-#gate .err{font-size:.78rem;color:var(--pay);height:16px;letter-spacing:.05em}
+#gate .err{font-size:.78rem;color:var(--pay);height:16px}
 
 /* APP */
 #app{display:none;flex-direction:column;min-height:100vh}
 
-/* sync */
+/* sync bar */
 #sync-bar{background:#fff;border-bottom:1px solid var(--lt);padding:7px 20px;display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--mauve)}
 .sdot{width:7px;height:7px;border-radius:50%;background:var(--taupe);flex-shrink:0}
 .sdot.ok{background:#1E6B3C}.sdot.err{background:var(--pay)}.sdot.spin{background:var(--gold);animation:pulse 1s infinite}
@@ -58,30 +56,25 @@ html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);colo
 .stat b.r{color:var(--pay)}.stat b.g{color:#1E6B3C}.stat b.o{color:var(--gold)}.stat b.t{color:var(--sav)}
 
 /* tabs */
-.tabs{background:#fff;border-bottom:2px solid var(--lt);padding:0 24px;display:flex;gap:0}
-.tab{padding:12px 20px;font-size:.78rem;font-weight:500;color:var(--mauve);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;letter-spacing:.05em;transition:all .15s}
+.tabs{background:#fff;border-bottom:2px solid var(--lt);padding:0 24px;display:flex}
+.tab{padding:12px 20px;font-size:.78rem;font-weight:500;color:var(--mauve);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
 .tab:hover{color:var(--dark)}
 .tab.on{color:var(--burg);border-bottom-color:var(--burg)}
-
-/* panel */
 .panel{display:none}.panel.on{display:block}
 
-/* ── GANTT PANEL ── */
+/* ── GANTT ── */
 .leg-bar{padding:10px 24px;display:flex;gap:16px;flex-wrap:wrap;background:var(--cream);border-bottom:1px solid var(--lt)}
 .leg{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mauve)}
 .sw{width:14px;height:10px;border-radius:2px}
 .dm{width:9px;height:9px;transform:rotate(45deg);border-radius:1px}
-
 .ctrl{background:#fff;border-bottom:1px solid var(--lt);padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .flbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);margin-right:2px}
 .btn{padding:4px 12px;border-radius:20px;border:1px solid var(--taupe);background:transparent;font-family:'Jost',sans-serif;font-size:.73rem;cursor:pointer;color:var(--dark);transition:all .15s}
 .btn:hover{background:var(--lt)}
 .btn.on{color:#fff;border-color:transparent}
-.btn.on.all{background:var(--burg)}.btn.on.pay{background:var(--pay)}.btn.on.rsvp{background:var(--rsvp)}.btn.on.diy{background:var(--diy)}.btn.on.con{background:var(--mauve)}
+.btn.on.all{background:var(--burg)}.btn.on.pay{background:var(--pay)}.btn.on.rsvp{background:var(--rsvp)}.btn.on.diy{background:var(--diy)}.btn.on.con{background:var(--mauve)}.btn.on.ven{background:var(--ven)}
 .srch{margin-left:auto;padding:4px 12px;border-radius:20px;border:1px solid var(--taupe);font-family:'Jost',sans-serif;font-size:.73rem;background:var(--cream);color:var(--dark);outline:none;width:180px}
 .srch:focus{border-color:var(--mauve)}
-
-/* table */
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:860px}
 thead th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);padding:7px 10px;border-bottom:1px solid var(--lt);white-space:nowrap;background:#fff;position:sticky;top:0;z-index:2;text-align:left}
@@ -89,59 +82,66 @@ thead th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacin
 .tr td{padding:5px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
 .tr.hidden{display:none}
 .tr:hover td{background:#F7F3EE}
-.tn{font-size:.8rem;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tn{font-size:.8rem;max-width:210px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tn.wd{font-weight:600;color:var(--burg)}
 .badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:.65rem;font-weight:600;white-space:nowrap}
 .bp{background:var(--pay-lt);color:#922B21}.br{background:var(--rsvp-lt);color:#0E4D4D}
 .bd{background:var(--diy-lt);color:#5D4200}.bc{background:var(--con-lt);color:#5C1F2E}
-.bv{background:#E8D5F0;color:#4A1C6B}
-
-/* gantt bar cell */
+.bv{background:var(--ven-lt);color:#4A1C6B}
 .bc2{position:relative;padding:3px 0;min-width:380px}
 .bw{position:relative;width:100%;height:18px}
-.bar{position:absolute;height:13px;top:2px;border-radius:3px;cursor:default}
+.bar{position:absolute;height:13px;top:2px;border-radius:3px}
 .bar:hover{opacity:.75}
 .blbl{position:absolute;font-size:.6rem;white-space:nowrap;top:3px;color:#fff;pointer-events:none;font-weight:500;padding-left:4px;overflow:hidden}
 .mstone{position:absolute;width:10px;height:10px;top:3px;transform:rotate(45deg);border-radius:1px}
 .tline{position:absolute;top:0;bottom:0;width:1.5px;background:var(--pay);opacity:.55;z-index:1}
 .tlbl{position:absolute;top:-13px;font-size:.58rem;color:var(--pay);transform:translateX(-50%);font-weight:600;white-space:nowrap}
-
-/* ruler */
 .rr td{padding:0;background:#fff;border-bottom:1px solid var(--lt)}
 .ri{position:relative;height:40px;margin-left:355px}
-
-/* status select */
 .ss{border:.5px solid var(--taupe);border-radius:10px;padding:2px 5px;font-family:'Jost',sans-serif;font-size:.68rem;background:var(--cream);color:var(--dark);cursor:pointer;outline:none;transition:all .2s}
 .ss.done{background:#D5F0E0;color:#1E6B3C;border-color:#1E6B3C}
 .ss.inp{background:#FFF3CC;color:#5D4200;border-color:#B8860B}
 .ss.saving{opacity:.5;pointer-events:none}
 
 /* ── BUDGET PANEL ── */
-.budget-section{padding:24px 28px 36px}
-.budget-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+.bpanel{padding:24px 28px 40px}
+.bpanel-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.bpanel-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--burg)}
+.bpanel-note{font-size:.72rem;color:var(--mauve);font-style:italic}
+.bcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
 .bcard{background:#fff;border:.5px solid var(--lt);border-radius:8px;padding:12px 14px}
 .bcard-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);margin-bottom:3px}
-.bcard-val{font-size:1.25rem;font-weight:600;color:var(--dark);font-family:'Cormorant Garamond',serif}
+.bcard-val{font-size:1.2rem;font-weight:600;color:var(--dark);font-family:'Cormorant Garamond',serif}
 .bcard-val.green{color:#1E6B3C}.bcard-val.red{color:var(--pay)}.bcard-val.teal{color:var(--sav)}
-.chart-wrap{position:relative;width:100%;height:340px;background:#fff;border:.5px solid var(--lt);border-radius:8px;padding:14px 16px 10px}
-.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;font-size:.7rem;color:var(--mauve)}
-.chart-legend span{display:flex;align-items:center;gap:5px}
+.chart-wrap{position:relative;width:100%;height:320px;background:#fff;border:.5px solid var(--lt);border-radius:8px;padding:14px 16px 10px;margin-bottom:24px}
+.chart-leg{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;font-size:.7rem;color:var(--mauve)}
+.chart-leg span{display:flex;align-items:center;gap:5px}
 .cl-sq{width:11px;height:9px;border-radius:2px;display:inline-block}
 .cl-ln{width:18px;height:2px;display:inline-block}
-.budget-note{font-size:.7rem;color:var(--mauve);margin-top:8px;font-style:italic}
 
-/* vendor table */
-.vtable-wrap{margin-top:20px;overflow-x:auto}
-.vtable{width:100%;border-collapse:collapse;min-width:640px;font-size:.78rem}
-.vtable th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mauve);padding:6px 10px;border-bottom:1px solid var(--lt);text-align:left;background:#fff}
-.vtable td{padding:6px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
-.vtable tr:hover td{background:#F7F3EE}
-.vtable .amt{font-weight:600;text-align:right}
-.vtable .deposit{color:var(--rsvp)}.vtable .final{color:var(--pay)}
-.status-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:600}
-.sp-booked{background:#D5F0E0;color:#1E6B3C}
-.sp-paid{background:#D5EDE8;color:#0E4D4D}
-.sp-est{background:#FFF3CC;color:#5D4200}
+/* editable vendor grid */
+.section-title{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--burg);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--lt)}
+.vendor-grid{width:100%;border-collapse:collapse;font-size:.78rem;margin-bottom:28px}
+.vendor-grid th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mauve);padding:6px 8px;border-bottom:1px solid var(--lt);text-align:left;background:#fff}
+.vendor-grid td{padding:5px 8px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
+.vendor-grid tr:hover td{background:#F7F3EE}
+.editable{border:.5px solid transparent;border-radius:4px;padding:3px 6px;font-family:'Jost',sans-serif;font-size:.78rem;background:transparent;color:var(--dark);width:100%;min-width:60px;outline:none;cursor:text}
+.editable:focus{background:#fff;border-color:var(--mauve);cursor:text}
+.editable:hover{background:var(--lt)}
+.save-btn{padding:2px 8px;border-radius:4px;border:1px solid var(--burg);background:transparent;color:var(--burg);font-family:'Jost',sans-serif;font-size:.65rem;cursor:pointer;opacity:0;transition:opacity .15s}
+.save-btn.show{opacity:1}
+.save-btn:hover{background:var(--burg);color:#fff}
+.save-btn.saved{border-color:#1E6B3C;color:#1E6B3C}
+.tot-row td{font-weight:600;background:var(--lt) !important}
+.amt-col{text-align:right;font-weight:500}
+.month-col{color:var(--mauve);font-size:.72rem}
+
+/* savings editor */
+.savings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:12px}
+.sav-cell{background:#fff;border:.5px solid var(--lt);border-radius:6px;padding:8px 10px}
+.sav-month{font-size:.65rem;color:var(--mauve);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.sav-input{border:none;border-bottom:.5px solid var(--taupe);font-family:'Jost',sans-serif;font-size:.85rem;font-weight:500;color:var(--sav);background:transparent;width:100%;outline:none;padding:1px 0}
+.sav-input:focus{border-bottom-color:var(--burg)}
 
 footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;color:var(--taupe);letter-spacing:.1em}
 </style>
@@ -175,7 +175,6 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
   <div class="cd" id="cd"></div>
   <div class="stats" id="stats"></div>
 
-  <!-- Tabs -->
   <div class="tabs">
     <div class="tab on" onclick="switchTab('gantt',this)">📅 Project Schedule</div>
     <div class="tab" onclick="switchTab('budget',this)">💰 Budget &amp; Savings</div>
@@ -184,11 +183,11 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
   <!-- GANTT PANEL -->
   <div class="panel on" id="panel-gantt">
     <div class="leg-bar">
-      <div class="leg"><div class="sw" style="background:var(--pay)"></div>Payment due</div>
-      <div class="leg"><div class="sw" style="background:var(--rsvp)"></div>RSVP / admin</div>
-      <div class="leg"><div class="sw" style="background:var(--diy)"></div>DIY / creative</div>
-      <div class="leg"><div class="sw" style="background:var(--con)"></div>Book / confirm</div>
-      <div class="leg"><div class="sw" style="background:#7D5A9E"></div>Vendor payment span</div>
+      <div class="leg"><div class="sw" style="background:var(--pay)"></div>Payment</div>
+      <div class="leg"><div class="sw" style="background:var(--rsvp)"></div>RSVP/Admin</div>
+      <div class="leg"><div class="sw" style="background:var(--diy)"></div>DIY</div>
+      <div class="leg"><div class="sw" style="background:var(--con)"></div>Book/Confirm</div>
+      <div class="leg"><div class="sw" style="background:var(--ven);opacity:.6"></div>Vendor span</div>
       <div class="leg"><div class="dm" style="background:var(--pay)"></div>Milestone</div>
       <div class="leg"><div style="width:12px;height:2px;background:var(--pay);opacity:.6"></div>Today</div>
     </div>
@@ -199,16 +198,17 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
       <button class="btn rsvp" onclick="setF('rsvp',this)">📋 RSVP</button>
       <button class="btn diy" onclick="setF('diy',this)">🎨 DIY</button>
       <button class="btn con" onclick="setF('con',this)">✅ Confirm</button>
+      <button class="btn ven" onclick="setF('ven',this)">🏷 Vendors</button>
       <input class="srch" type="text" placeholder="Search…" oninput="doSearch(this.value)">
     </div>
     <div class="tw">
       <table>
         <thead><tr>
-          <th style="width:195px">Task</th>
-          <th style="width:105px;text-align:center">Category</th>
-          <th style="width:115px">Due date</th>
+          <th style="width:200px">Task</th>
+          <th style="width:100px;text-align:center">Category</th>
+          <th style="width:120px">Due date</th>
           <th style="width:120px;text-align:center">Status</th>
-          <th>Timeline — Apr 2026 → Aug 2028</th>
+          <th>Timeline — Jan 2026 → Aug 2028</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -217,29 +217,39 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
 
   <!-- BUDGET PANEL -->
   <div class="panel" id="panel-budget">
-    <div class="budget-section">
-      <div class="budget-cards" id="bcards"></div>
+    <div class="bpanel">
+      <div class="bpanel-top">
+        <div class="bpanel-title">Budget &amp; Savings</div>
+        <div class="bpanel-note">Edit any cell below — changes save to Google Sheets and update the chart automatically</div>
+      </div>
+
+      <div class="bcards" id="bcards"></div>
+
       <div class="chart-wrap">
-        <div class="chart-legend">
-          <span><span class="cl-ln" style="background:#1A6B6B"></span>Adjusted available balance</span>
-          <span><span class="cl-sq" style="background:rgba(192,57,43,0.6)"></span>Deposit due</span>
-          <span><span class="cl-sq" style="background:rgba(107,39,55,0.7)"></span>Final payment due</span>
-          <span><span class="cl-sq" style="background:rgba(30,107,60,0.75)"></span>Paid</span>
+        <div class="chart-leg">
+          <span><span class="cl-ln" style="background:#1A6B6B"></span>Available balance</span>
+          <span><span class="cl-sq" style="background:rgba(192,57,43,0.55)"></span>Payments due</span>
+          <span><span class="cl-sq" style="background:rgba(30,107,60,0.7)"></span>Paid</span>
         </div>
-        <canvas id="budgetChart" role="img" aria-label="Wedding savings balance vs scheduled payments by month, Apr 2026 to Aug 2028"></canvas>
+        <canvas id="budgetChart" role="img" aria-label="Wedding savings vs payments by month"></canvas>
       </div>
-      <p class="budget-note">⚠️ Jul–Aug 2028 show a ~$3,600 shortfall based on current estimates. Increasing monthly savings or trimming vendor budgets will close the gap. Update the Savings tab in your workbook anytime — this chart refreshes on page load.</p>
-      <div class="vtable-wrap">
-        <table class="vtable" id="vtable">
-          <thead><tr>
-            <th>Vendor</th><th>Category</th><th>Status</th>
-            <th style="text-align:right">Deposit</th><th>Deposit Month</th>
-            <th style="text-align:right">Final</th><th>Final Month</th>
-            <th style="text-align:right">Total</th>
-          </tr></thead>
-          <tbody id="vtbody"></tbody>
-        </table>
-      </div>
+
+      <div class="section-title">Vendor Payments — click any amount or month to edit</div>
+      <table class="vendor-grid" id="vendor-table">
+        <thead><tr>
+          <th>Vendor</th><th>Category</th>
+          <th class="amt-col">Deposit</th><th class="month-col">Month</th>
+          <th class="amt-col">Partial 1</th><th class="month-col">Month</th>
+          <th class="amt-col">Partial 2</th><th class="month-col">Month</th>
+          <th class="amt-col">Final</th><th class="month-col">Final Month</th>
+          <th class="amt-col">Total</th><th></th>
+        </tr></thead>
+        <tbody id="vendor-tbody"></tbody>
+      </table>
+
+      <div class="section-title">Monthly Savings Contributions — edit to update your balance projection</div>
+      <div class="savings-grid" id="savings-grid"></div>
+      <button onclick="saveAllSavings()" style="padding:6px 16px;border-radius:4px;border:1px solid var(--burg);background:transparent;color:var(--burg);font-family:'Jost',sans-serif;font-size:.75rem;cursor:pointer;margin-top:4px">Save savings changes</button>
     </div>
   </div>
 
@@ -247,328 +257,328 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
 </div>
 
 <script>
-const PW='rialto2028';
-const SURL='https://script.google.com/macros/s/AKfycbw0LzSFWVLwPHFNfcW5OyYymHPcD-j1E4pSqicx-nYCv7RrNrAsroTwOLWBGQQJB-xSfA/exec';
-const WEDDING=new Date(2028,7,4);
-const TODAY=new Date();TODAY.setHours(0,0,0,0);
-const T0=new Date(2026,3,1),T1=new Date(2028,8,15),TS=T1-T0;
+const PW   = 'rialto2028';
+const SURL = 'https://script.google.com/macros/s/AKfycbx_1hAgV_g2Qg3oQ1W0wSQ287op6ZB5OEZ6WPJJV7gpTzun-a1G-dnl9nPoeXDYXorU/exec';
+const WEDDING = new Date(2028,7,4);
+const TODAY   = new Date(); TODAY.setHours(0,0,0,0);
+const T0 = new Date(2026,0,1), T1 = new Date(2028,8,15), TS = T1-T0;
 
-// ── ADJUSTED RUNNING BALANCE from Savings_Balance sheet ───────
-// Gross savings minus cumulative future vendor payments
-// Jul/Aug 2028 show negative — that's the ~$3,600 gap to close
-let savingsData={
-  '2026-02':0,    '2026-03':0,    '2026-04':397,  '2026-05':800,
-  '2026-06':1210, '2026-07':851,  '2026-08':2064, '2026-09':1502,
-  '2026-10':2502, '2026-11':4502, '2026-12':6502,
-  '2027-01':5902, '2027-02':5902, '2027-03':6602, '2027-04':7102,
-  '2027-05':7702, '2027-06':8402, '2027-07':9402, '2027-08':10402,
-  '2027-09':11402,'2027-10':12402,'2027-11':13402,'2027-12':14402,
-  '2028-01':15252,'2028-02':16052,'2028-03':16552,'2028-04':17052,
-  '2028-05':17952,'2028-06':18952,'2028-07':-1248,'2028-08':-2348
-};
+// ── Live data from Google Sheets ──────────────────────────────
+let sheetVendors  = [];   // Vendor_Budget rows
+let sheetPayments = [];   // Payment_Feed rows
+let sheetSavings  = {};   // { 'YYYY-MM': contribution }
+let statuses      = {};
+let syncOk        = false;
+let budgetChart   = null;
+let curF = 'all', curS = '';
 
-// ── VENDORS from your Vendor_Budget + Payment_Feed ───────────
-// {vendor, category, status, deposit, depositMonth, final, finalMonth, total}
-const VENDORS=[
-  {v:'Venue',       cat:'Venue',          st:'Paid/Booked', dep:1200, dm:'2026-01', fin:1800,  fm:'2028-07', tot:3000},
-  {v:'DJ',          cat:'Entertainment',  st:'Booked',      dep:1750, dm:'2026-07', fin:1750,  fm:'2028-07', tot:3500},
-  {v:'Dress',       cat:'Attire',         st:'Booked',      dep:1454, dm:'2026-02', fin:969,   fm:'2026-07', tot:2423, note:'Affirm $286.76/mo Feb–Sep 2026; shop balance $969 due Jul 2026'},
-  {v:'Catering',    cat:'Food & Beverage',st:'Estimate',    dep:1600, dm:'2027-01', fin:6400,  fm:'2028-07', tot:8000},
-  {v:'Photography', cat:'Photo',          st:'Estimate',    dep:1000, dm:'2027-02', fin:3000,  fm:'2028-07', tot:4000},
-  {v:'Coordinator', cat:'Planning',       st:'Booked',      dep:300,  dm:'2026-04', fin:1200,  fm:'2028-07', tot:1500},
-  {v:'Rentals',     cat:'Rentals',        st:'Estimate',    dep:500,  dm:'2027-04', fin:2000,  fm:'2028-07', tot:2500},
-  {v:'Florals',     cat:'Decor',          st:'Estimate',    dep:400,  dm:'2027-05', fin:1600,  fm:'2028-07', tot:2000},
-  {v:'Bar',         cat:'Bar',            st:'Estimate',    dep:300,  dm:'2027-06', fin:1200,  fm:'2028-07', tot:1500},
-  {v:'Cake/Dessert',cat:'Dessert',        st:'Estimate',    dep:150,  dm:'2028-01', fin:450,   fm:'2028-07', tot:600},
-  {v:'Hair & Makeup',cat:'Beauty',        st:'Estimate',    dep:200,  dm:'2028-02', fin:600,   fm:'2028-08', tot:800},
-  {v:'Stationery',  cat:'Stationery',     st:'Estimate',    dep:0,    dm:'2028-03', fin:500,   fm:'2028-03', tot:500},
-  {v:'Transportation',cat:'Transport',    st:'Estimate',    dep:500,  dm:'2028-04', fin:2000,  fm:'2028-07', tot:2500},
-  {v:'Marriage License',cat:'Legal',      st:'Estimate',    dep:60,   dm:'2028-07', fin:0,     fm:'2028-07', tot:60},
-  {v:'Tips/Misc',   cat:'Misc',           st:'Estimate',    dep:0,    dm:'2028-08', fin:1500,  fm:'2028-08', tot:1500},
-];
+// ── Computed running balance ──────────────────────────────────
+function buildRunningBalance() {
+  // Start from first savings month, accumulate contributions then subtract payments
+  const allMonths = new Set([
+    ...Object.keys(sheetSavings),
+    ...sheetPayments.map(p => p.Month)
+  ]);
+  const sorted = [...allMonths].filter(Boolean).sort();
+  let balance = 0;
+  const running = {};
+  sorted.forEach(mk => {
+    balance += sheetSavings[mk] || 0;
+    const paid = sheetPayments
+      .filter(p => p.Month === mk)
+      .reduce((s, p) => s + (Number(p.Amount) || 0), 0);
+    balance -= paid;
+    running[mk] = Math.round(balance * 100) / 100;
+  });
+  return running;
+}
 
-// ── TASK SCHEDULE ─────────────────────────────────────────────
-const CC={pay:'#C0392B',rsvp:'#1A6B6B',diy:'#B8860B',con:'#9E7B8A',vendor:'#7D5A9E'};
-const CB={pay:'bp',rsvp:'br',diy:'bd',con:'bc',vendor:'bv'};
-const CL={pay:'Payment',rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm',vendor:'Vendor'};
+function getSavings(d) {
+  const mk = monthKey(d);
+  const rb = buildRunningBalance();
+  const keys = Object.keys(rb).sort();
+  if (rb[mk] !== undefined) return rb[mk];
+  let best = 0;
+  for (const k of keys) { if (k <= mk) best = rb[k]; }
+  return best;
+}
 
-const PHASES=[
-  {l:'Now — 18+ months out',t:[
-    {n:'Coordinator — deposit paid',       c:'pay', d:'2026-04-01',         amt:300},
-    {n:'Book Rialto Theater — deposit',    c:'pay', d:'2026-05-15',m:true,  amt:1200},
-    {n:'Book DJ Khalil — deposit', c:'pay', d:'2026-06-01',         amt:1750},
-    {n:'Book photographer — deposit',      c:'pay', d:'2026-07-01',         amt:1000},
-    {n:'Book caterer — tasting & contract',c:'con', d:'2026-07-01'},
-    {n:'Dress — Affirm payments (Feb–Sep 2026)',c:'pay', d:'2026-02-01',     amt:1454},
-    {n:'Dress — shop balance due',             c:'pay', d:'2026-07-01',     amt:969},
-    {n:'Book videographer — deposit',      c:'pay', d:'2026-08-01',         amt:750},
-    {n:'Book officiant',                   c:'con', d:'2026-09-01'},
-    {n:'Book Star Trolley — deposit',      c:'pay', d:'2026-09-01',         amt:500},
-    {n:'Book florist — deposit',           c:'pay', d:'2026-10-01',         amt:400},
-    {n:'Book hair & makeup — deposit',     c:'pay', d:'2026-10-01',         amt:200},
-  ]},
-  {l:'12–18 months out',t:[
-    {n:'Book hotel room block',            c:'con', d:'2026-12-01'},
-    {n:'Finalize guest list (~60 guests)', c:'rsvp',d:'2027-01-01'},
-    {n:'Order wedding dress',              c:'con', d:'2027-01-15',m:true},
-    {n:'Save-the-dates — design',          c:'diy', d:'2027-02-01'},
-    {n:'Save-the-dates — mail',            c:'rsvp',d:'2027-02-15'},
-    {n:'Wedding website — finalize',       c:'diy', d:'2027-03-01'},
-    {n:'Book cake/desserts — deposit',     c:'pay', d:'2027-03-01',         amt:150},
-  ]},
-  {l:'9–12 months out',t:[
-    {n:'Ceremony details with officiant',  c:'con', d:'2027-05-01'},
-    {n:'Book rehearsal dinner venue',      c:'con', d:'2027-05-01'},
-    {n:'Invitation suite — design',        c:'diy', d:'2027-05-15'},
-    {n:'Finalize florals with florist',    c:'con', d:'2027-06-01'},
-    {n:'Catering — mid-point payment',     c:'pay', d:'2027-07-01',m:true,  amt:1600},
-    {n:'Book honeymoon — flights & hotel', c:'con', d:'2027-07-15'},
-  ]},
-  {l:'6–9 months out',t:[
-    {n:'Invitation order & proof',         c:'diy', d:'2027-09-01'},
-    {n:'Order wedding favors',             c:'diy', d:'2027-11-01'},
-    {n:'Mail invitations',                 c:'rsvp',d:'2027-12-01'},
-    {n:'RSVP deadline',                    c:'rsvp',d:'2028-01-15',m:true},
-    {n:'Finalize menu with caterer',       c:'con', d:'2028-01-20'},
-    {n:'Create seating chart',             c:'diy', d:'2028-02-01'},
-    {n:'Ceremony programs — design',       c:'diy', d:'2028-02-15'},
-    {n:'Signage & décor elements',         c:'diy', d:'2028-03-01'},
-    {n:'Final dress fitting',              c:'con', d:'2028-03-01'},
-    {n:'Hair & makeup trial run',          c:'con', d:'2028-03-15'},
-  ]},
-  {l:'1–3 months out',t:[
-    {n:'Stationery — order & pay',         c:'pay', d:'2028-03-01',         amt:500},
-    {n:'Transportation — deposit',         c:'pay', d:'2028-04-01',         amt:500},
-    {n:'All signage & décor — print',      c:'diy', d:'2028-05-01'},
-    {n:'Venue — final payment',            c:'pay', d:'2028-07-01',m:true,  amt:1800},
-    {n:'Catering — final payment',         c:'pay', d:'2028-07-01',         amt:6400},
-    {n:'Photography — final payment',      c:'pay', d:'2028-07-01',         amt:3000},
-    {n:'DJ — final payment',               c:'pay', d:'2028-07-01',         amt:1750},
-    {n:'Florals — final payment',          c:'pay', d:'2028-07-01',         amt:1600},
-    {n:'Coordinator — final payment',      c:'pay', d:'2028-07-01',         amt:1200},
-    {n:'Rentals — final payment',          c:'pay', d:'2028-07-01',         amt:2000},
-    {n:'Bar — final payment',              c:'pay', d:'2028-07-01',         amt:1200},
-    {n:'Cake — final payment',             c:'pay', d:'2028-07-01',         amt:450},
-    {n:'Transportation — final payment',   c:'pay', d:'2028-07-01',         amt:2000},
-    {n:'Marriage license',                 c:'rsvp',d:'2028-07-01',m:true,  amt:60},
-    {n:'Confirm all vendors + timeline',   c:'con', d:'2028-07-01'},
-    {n:'Assemble programs & favors',       c:'diy', d:'2028-07-15'},
-    {n:'Final headcount to caterer',       c:'rsvp',d:'2028-07-18'},
-    {n:'Hair & makeup — final payment',    c:'pay', d:'2028-08-01',         amt:600},
-    {n:'Tips / misc buffer',               c:'pay', d:'2028-08-01',         amt:1500},
-  ]},
-  {l:'Wedding week',t:[
-    {n:'Wedding rehearsal',                c:'con', d:'2028-08-03'},
-    {n:'Rehearsal dinner',                 c:'con', d:'2028-08-03'},
-    {n:'Pick up florals',                  c:'con', d:'2028-08-04'},
-    {n:'⭐ WEDDING DAY',                  c:'con', d:'2028-08-04',m:true,wd:true},
-  ]},
-];
-
-// ── VENDOR GANTT rows (deposit→final spans) ───────────────────
-const VENDOR_GANTT=[
-  {n:'Venue: deposit → final',            start:'2026-01', end:'2028-07', col:'#7D5A9E', dep:1200, fin:1800},
-  {n:'DJ: deposit → final',               start:'2026-07', end:'2028-07', col:'#7D5A9E', dep:1750, fin:1750},
-  {n:'Dress: Affirm Feb–Sep 2026 + shop balance Jul 2026', start:'2026-02', end:'2026-09', col:'#7D5A9E', dep:1454, fin:969},
-  {n:'Coordinator: deposit → final',      start:'2026-04', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
-  {n:'Catering: deposit → final',         start:'2027-01', end:'2028-07', col:'#7D5A9E', dep:1600, fin:6400},
-  {n:'Photography: dep → final',          start:'2027-02', end:'2028-07', col:'#7D5A9E', dep:1000, fin:3000},
-  {n:'Rentals: dep → final',              start:'2027-04', end:'2028-07', col:'#7D5A9E', dep:500,  fin:2000},
-  {n:'Florals: dep → final',              start:'2027-05', end:'2028-07', col:'#7D5A9E', dep:400,  fin:1600},
-  {n:'Bar: dep → final',                  start:'2027-06', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
-  {n:'Cake: dep → final',                 start:'2028-01', end:'2028-07', col:'#7D5A9E', dep:150,  fin:450},
-  {n:'Hair & Makeup: dep → final',        start:'2028-02', end:'2028-08', col:'#7D5A9E', dep:200,  fin:600},
-  {n:'Transportation: dep → final',       start:'2028-04', end:'2028-07', col:'#7D5A9E', dep:500,  fin:2000},
-];
-
-let statuses={};
-let syncOk=false;
-let curF='all',curS='';
-let budgetChart=null;
-
-/* ── GATE ── */
-function unlock(){
-  if(document.getElementById('pwi').value===PW){
-    const g=document.getElementById('gate');
-    g.style.opacity='0';
-    setTimeout(()=>{g.style.display='none';document.getElementById('app').style.display='flex';sessionStorage.setItem('ws_ok','1');init();},400);
+// ── Gate ──────────────────────────────────────────────────────
+function unlock() {
+  if (document.getElementById('pwi').value === PW) {
+    const g = document.getElementById('gate');
+    g.style.opacity = '0';
+    setTimeout(() => {
+      g.style.display = 'none';
+      document.getElementById('app').style.display = 'flex';
+      sessionStorage.setItem('ws_ok','1');
+      init();
+    }, 400);
   } else {
-    document.getElementById('pwe').textContent='Incorrect password — try again';
-    document.getElementById('pwi').value='';
+    document.getElementById('pwe').textContent = 'Incorrect password — try again';
+    document.getElementById('pwi').value = '';
   }
 }
-if(sessionStorage.getItem('ws_ok')==='1'){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='flex';}
-
-/* ── TABS ── */
-function switchTab(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById('panel-'+id).classList.add('on');
-  if(id==='budget') buildBudgetChart();
+if (sessionStorage.getItem('ws_ok') === '1') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
 }
 
-/* ── SYNC ── */
-function setSS(state,msg){
-  document.getElementById('sdot').className='sdot '+state;
-  document.getElementById('smsg').textContent=msg;
-  syncOk=state==='ok';
+// ── Sync ──────────────────────────────────────────────────────
+function setSS(state, msg) {
+  document.getElementById('sdot').className = 'sdot ' + state;
+  document.getElementById('smsg').textContent = msg;
+  syncOk = state === 'ok';
 }
-async function loadStatuses(){
-  setSS('spin','Loading from Google Sheets…');
-  try{
-    const r=await fetch(SURL,{method:'GET',redirect:'follow'});
-    const d=await r.json();
-    if(d.ok){
-      statuses=d.statuses||{};
-      if(d.savings) savingsData={...savingsData,...d.savings};
-      setSS('ok','Synced · '+new Date().toLocaleTimeString());
-      refreshDropdowns();updateStats();
-    } else setSS('err','Google Sheets error');
-  }catch(e){setSS('err','Could not connect — showing cached data');}
+
+async function loadAll() {
+  setSS('spin', 'Loading from Google Sheets…');
+  try {
+    const r = await fetch(SURL, { method:'GET', redirect:'follow' });
+    const d = await r.json();
+    if (d.ok) {
+      statuses      = d.statuses  || {};
+      sheetVendors  = d.vendors   || [];
+      sheetPayments = d.payments  || [];
+      sheetSavings  = d.savings   || {};
+      setSS('ok', 'Synced · ' + new Date().toLocaleTimeString());
+      refreshDropdowns();
+      buildGanttVendorRows();
+      buildVendorTable();
+      buildSavingsGrid();
+      updateStats();
+      if (document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
+    } else setSS('err', 'Google Sheets error — ' + (d.error||''));
+  } catch(e) { setSS('err', 'Could not connect — check URL'); }
 }
-async function pushStatus(key,val){
-  if(!syncOk)return;
-  try{
-    await fetch(SURL,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain'},body:JSON.stringify({taskKey:key,status:val})});
-    setSS('ok','Saved · '+new Date().toLocaleTimeString());
-  }catch(e){setSS('err','Save failed');}
+
+async function post(payload) {
+  if (!syncOk) return;
+  try {
+    const r = await fetch(SURL, {
+      method:'POST', redirect:'follow',
+      headers:{'Content-Type':'text/plain'},
+      body: JSON.stringify(payload)
+    });
+    const d = await r.json();
+    setSS('ok', 'Saved · ' + new Date().toLocaleTimeString());
+    return d;
+  } catch(e) { setSS('err', 'Save failed'); }
 }
-function refreshDropdowns(){
-  document.querySelectorAll('.ss').forEach(s=>{
-    const k=s.dataset.key,v=statuses[k]||'open';
-    s.value=v;s.className='ss '+(v==='done'?'done':v==='in-progress'?'inp':'');
+
+function refreshDropdowns() {
+  document.querySelectorAll('.ss').forEach(s => {
+    const k = s.dataset.key, v = statuses[k] || 'open';
+    s.value = v;
+    s.className = 'ss ' + (v==='done'?'done':v==='in-progress'?'inp':'');
   });
 }
 
-/* ── HELPERS ── */
-function pd(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d||1);}
-function pp(d){return Math.max(0,Math.min(100,((d-T0)/TS)*100));}
-function fd(s){return pd(s).toLocaleDateString('en-US',{month:'short',day:s.length>7?'numeric':undefined,year:'numeric'});}
-function fs(s){return pd(s).toLocaleDateString('en-US',{month:'short',day:s.length>7?'numeric':undefined});}
-function tk(phase,task){return phase.l+'|'+task.n;}
-function monthKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
-function getSavings(d){
-  const mk=monthKey(d);
-  if(savingsData[mk]!==undefined) return savingsData[mk];
-  const keys=Object.keys(savingsData).sort();
-  let best=0;
-  for(const k of keys){if(k<=mk)best=savingsData[k];}
-  return best;
-}
-function fmt$(n){return n?'$'+Math.round(n).toLocaleString():'—';}
+// ── Helpers ───────────────────────────────────────────────────
+function pd(s) { const[y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d||1); }
+function pp(d) { return Math.max(0,Math.min(100,((d-T0)/TS)*100)); }
+function fd(s) { return pd(s).toLocaleDateString('en-US',{month:'short',day:s.length>7?'numeric':undefined,year:'numeric'}); }
+function fs(s) { return pd(s).toLocaleDateString('en-US',{month:'short',year:'2-digit'}); }
+function monthKey(d) { return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+function fmt$(n) { return n!=null&&n!==''?'$'+Math.round(Number(n)).toLocaleString():'—'; }
+function tk(phase,task) { return phase+'|'+task; }
 
-/* ── INIT ── */
-function init(){
-  renderCD();buildTable();buildVendorTable();updateStats();loadStatuses();
+// ── Init ──────────────────────────────────────────────────────
+function init() {
+  renderCD();
+  buildStaticGantt();
+  updateStats();
+  loadAll();
 }
 
-function renderCD(){
-  const tot=Math.round((WEDDING-TODAY)/86400000);
-  document.getElementById('cd').innerHTML=`
+function renderCD() {
+  const tot = Math.round((WEDDING-TODAY)/86400000);
+  document.getElementById('cd').innerHTML = `
     <div class="cdi"><div class="cdn">${tot.toLocaleString()}</div><div class="cdl">Days</div></div>
     <div class="cdi"><div class="cdn">${Math.floor(tot/30.44)}</div><div class="cdl">Months</div></div>
     <div class="cdi"><div class="cdn">${Math.floor(tot/7).toLocaleString()}</div><div class="cdl">Weeks</div></div>`;
 }
 
-function updateStats(){
-  let tot=0,done=0,soon=0,payPending=0,totalSpent=0;
+function updateStats() {
+  let tot=0,done=0,soon=0,payPend=0,spent=0;
   PHASES.forEach(ph=>ph.t.forEach(t=>{
-    const k=tk(ph,t),days=Math.round((pd(t.d)-TODAY)/86400000),s=statuses[k]||'open';
+    const k=tk(ph.l,t.n),days=Math.round((pd(t.d)-TODAY)/86400000),s=statuses[k]||'open';
     tot++;if(s==='done')done++;if(days>=0&&days<=30)soon++;
-    if(t.c==='pay'&&days>=0&&s!=='done') payPending++;
-    if(s==='done'&&t.amt) totalSpent+=t.amt;
+    if(t.c==='pay'&&days>=0&&s!=='done') payPend++;
+    if(s==='done'&&t.amt) spent+=t.amt;
   }));
-  const savNow=getSavings(TODAY);
+  const savNow = getSavings(TODAY);
   document.getElementById('stats').innerHTML=`
     <div class="stat"><b>${tot}</b> Tasks</div>
     <div class="stat"><b class="g">${done}</b> Done</div>
     <div class="stat"><b class="o">${soon}</b> Due in 30 days</div>
-    <div class="stat"><b class="r">${payPending}</b> Pending payments</div>
-    <div class="stat"><b class="t">${fmt$(savNow)}</b> Saved to date</div>
-    <div class="stat"><b class="g">${fmt$(totalSpent)}</b> Paid so far</div>`;
+    <div class="stat"><b class="r">${payPend}</b> Pending payments</div>
+    <div class="stat"><b class="t">${fmt$(savNow)}</b> Available now</div>`;
 }
 
-/* ── GANTT TABLE ── */
-function buildTable(){
-  const tbody=document.getElementById('tbody');
-  tbody.innerHTML='';
-  const tp=pp(TODAY);
+// ── TABS ──────────────────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('panel-'+id).classList.add('on');
+  if (id==='budget') buildBudgetChart();
+}
+
+// ── STATIC TASK SCHEDULE ──────────────────────────────────────
+const CC = {pay:'#C0392B',rsvp:'#1A6B6B',diy:'#B8860B',con:'#9E7B8A',ven:'#7D5A9E'};
+const CB = {pay:'bp',rsvp:'br',diy:'bd',con:'bc',ven:'bv'};
+const CL = {pay:'Payment',rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm',ven:'Vendor'};
+
+const PHASES = [
+  {l:'Now — 18+ months out',t:[
+    {n:'Coordinator — deposit paid',        c:'pay',d:'2026-04-01',amt:300},
+    {n:'Book Rialto Theater — deposit',     c:'pay',d:'2026-05-15',m:true,amt:1200},
+    {n:'Book DJ Khalil — deposit',          c:'pay',d:'2026-06-01',amt:1750},
+    {n:'Book photographer — deposit',       c:'pay',d:'2026-07-01',amt:1000},
+    {n:'Book caterer — tasting & contract', c:'con',d:'2026-07-01'},
+    {n:'Dress — Affirm payments (Feb–Sep)', c:'pay',d:'2026-02-01',amt:1454},
+    {n:'Dress — shop balance due',          c:'pay',d:'2026-07-01',amt:969},
+    {n:'Book videographer — deposit',       c:'pay',d:'2026-08-01',amt:750},
+    {n:'Book officiant',                    c:'con',d:'2026-09-01'},
+    {n:'Book Star Trolley — deposit',       c:'pay',d:'2026-09-01',amt:500},
+    {n:'Book florist — deposit',            c:'pay',d:'2026-10-01',amt:400},
+    {n:'Book hair & makeup — deposit',      c:'pay',d:'2026-10-01',amt:200},
+  ]},
+  {l:'12–18 months out',t:[
+    {n:'Book hotel room block',             c:'con',d:'2026-12-01'},
+    {n:'Finalize guest list (~60 guests)',  c:'rsvp',d:'2027-01-01'},
+    {n:'Catering — deposit',               c:'pay',d:'2027-01-01',amt:1600},
+    {n:'Order wedding dress',              c:'con',d:'2027-01-15',m:true},
+    {n:'Photography — deposit',            c:'pay',d:'2027-02-01',amt:1000},
+    {n:'Save-the-dates — design',          c:'diy',d:'2027-02-01'},
+    {n:'Save-the-dates — mail',            c:'rsvp',d:'2027-02-15'},
+    {n:'Coordinator — deposit',            c:'pay',d:'2027-03-01',amt:300},
+    {n:'Wedding website — finalize',       c:'diy',d:'2027-03-01'},
+    {n:'Cake/desserts — deposit',          c:'pay',d:'2027-03-01',amt:150},
+    {n:'Rentals — deposit',                c:'pay',d:'2027-04-01',amt:500},
+    {n:'Florals — deposit',                c:'pay',d:'2027-05-01',amt:400},
+  ]},
+  {l:'9–12 months out',t:[
+    {n:'Ceremony details with officiant',  c:'con',d:'2027-05-01'},
+    {n:'Book rehearsal dinner venue',      c:'con',d:'2027-05-01'},
+    {n:'Invitation suite — design',        c:'diy',d:'2027-05-15'},
+    {n:'Bar — deposit',                    c:'pay',d:'2027-06-01',amt:300},
+    {n:'Finalize florals with florist',    c:'con',d:'2027-06-01'},
+    {n:"Book Devin's suit",                c:'con',d:'2027-06-01'},
+    {n:'Book Airbnb/villa — deposit',      c:'pay',d:'2027-06-01',amt:250},
+    {n:'Coordinator — partial payment',    c:'pay',d:'2027-06-01',amt:500},
+    {n:'Catering — partial 1',             c:'pay',d:'2027-07-01',amt:1000},
+    {n:'Book honeymoon — flights & hotel', c:'con',d:'2027-07-15'},
+    {n:'Photography — partial 1',          c:'pay',d:'2027-08-01',amt:750},
+    {n:'Invitation order & proof',         c:'diy',d:'2027-09-01'},
+    {n:'Catering — partial 2',             c:'pay',d:'2027-10-01',amt:1000},
+    {n:'Coordinator — partial payment 2',  c:'pay',d:'2027-10-01',amt:400},
+  ]},
+  {l:'6–9 months out',t:[
+    {n:'Order wedding favors',             c:'diy',d:'2027-11-01'},
+    {n:'Photography — partial 2',          c:'pay',d:'2027-12-01',amt:750},
+    {n:'Mail invitations',                 c:'rsvp',d:'2027-12-01'},
+    {n:'RSVP deadline',                    c:'rsvp',d:'2028-01-15',m:true},
+    {n:'Catering — partial 3',             c:'pay',d:'2028-01-01',amt:1000},
+    {n:'Finalize menu with caterer',       c:'con',d:'2028-01-20'},
+    {n:'Hair & makeup — deposit',          c:'pay',d:'2028-02-01',amt:200},
+    {n:'Create seating chart',             c:'diy',d:'2028-02-01'},
+    {n:'Ceremony programs — design',       c:'diy',d:'2028-02-15'},
+    {n:'Airbnb — partial 1',               c:'pay',d:'2028-03-01',amt:500},
+    {n:'Stationery — order & pay',         c:'pay',d:'2028-03-01',amt:500},
+    {n:'Signage & décor elements',         c:'diy',d:'2028-03-01'},
+    {n:'Final dress fitting',              c:'con',d:'2028-03-01'},
+    {n:'Hair & makeup trial run',          c:'con',d:'2028-03-15'},
+    {n:'Airbnb — partial 2',               c:'pay',d:'2028-04-01',amt:500},
+    {n:'Transportation — deposit',         c:'pay',d:'2028-04-01',amt:500},
+    {n:"Devin's suit — purchase",          c:'pay',d:'2028-05-01',amt:800},
+    {n:'Dress alterations',                c:'pay',d:'2028-05-01',amt:600},
+  ]},
+  {l:'1–3 months out',t:[
+    {n:'All signage & décor — print',      c:'diy',d:'2028-05-01'},
+    {n:'Venue — final payment',            c:'pay',d:'2028-07-01',m:true,amt:1800},
+    {n:'Catering — final payment',         c:'pay',d:'2028-07-01',amt:3400},
+    {n:'Photography — final payment',      c:'pay',d:'2028-07-01',amt:1500},
+    {n:'DJ Khalil — final payment',        c:'pay',d:'2028-07-01',amt:1750},
+    {n:'Florals — final payment',          c:'pay',d:'2028-07-01',amt:1600},
+    {n:'Coordinator — final payment',      c:'pay',d:'2028-07-01',amt:1000},
+    {n:'Rentals — final payment',          c:'pay',d:'2028-07-01',amt:2000},
+    {n:'Bar — final payment',              c:'pay',d:'2028-07-01',amt:1200},
+    {n:'Cake — final payment',             c:'pay',d:'2028-07-01',amt:450},
+    {n:'Trolley — final payment',          c:'pay',d:'2028-07-01',amt:2000},
+    {n:'Airbnb — final balance',           c:'pay',d:'2028-07-01',amt:750},
+    {n:'Marriage license',                 c:'rsvp',d:'2028-07-01',m:true,amt:100},
+    {n:'Tips / misc buffer',               c:'pay',d:'2028-07-01',amt:1000},
+    {n:'Confirm all vendors + timeline',   c:'con',d:'2028-07-01'},
+    {n:'Assemble programs & favors',       c:'diy',d:'2028-07-15'},
+    {n:'Final headcount to caterer',       c:'rsvp',d:'2028-07-18'},
+    {n:'Hair & makeup — final payment',    c:'pay',d:'2028-08-01',amt:600},
+  ]},
+  {l:'Wedding week',t:[
+    {n:'Wedding rehearsal',                c:'con',d:'2028-08-03'},
+    {n:'Rehearsal dinner',                 c:'con',d:'2028-08-03'},
+    {n:'Pick up florals',                  c:'con',d:'2028-08-04'},
+    {n:'⭐ WEDDING DAY',                   c:'con',d:'2028-08-04',m:true,wd:true},
+  ]},
+];
+
+// ── GANTT BUILD ───────────────────────────────────────────────
+function buildStaticGantt() {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  const tp = pp(TODAY);
 
   // ruler
-  const rr=document.createElement('tr');rr.className='rr';
-  rr.innerHTML='<td colspan="5"><div class="ri" id="ruler"></div></td>';
+  const rr = document.createElement('tr'); rr.className='rr';
+  rr.innerHTML = '<td colspan="5"><div class="ri" id="ruler"></div></td>';
   tbody.appendChild(rr);
-  setTimeout(()=>{
-    const ruler=document.getElementById('ruler');if(!ruler)return;
-    let d=new Date(T0);
-    while(d<T1){
-      const p=pp(d),isYr=d.getMonth()===0||d.getTime()===T0.getTime(),isQ=d.getMonth()%3===0;
-      if(isYr||isQ){
-        const bal=getSavings(d);
-        const wrap=document.createElement('div');
-        wrap.style.cssText=`position:absolute;left:${p}%;transform:translateX(-50%);text-align:center;white-space:nowrap;top:2px`;
-        const lbl=document.createElement('div');
-        lbl.style.cssText=`font-size:.58rem;color:${isYr?'#6B2737':'#9E7B8A'};font-weight:${isYr?600:400};line-height:1.2`;
-        lbl.textContent=isYr?d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}):d.toLocaleDateString('en-US',{month:'short'});
-        const amt=document.createElement('div');
-        amt.style.cssText=`font-size:.56rem;color:#1A6B6B;font-weight:600;margin-top:1px`;
-        amt.textContent='$'+Math.round(bal/1000)+'k';
-        wrap.appendChild(lbl);wrap.appendChild(amt);
+  setTimeout(() => {
+    const ruler = document.getElementById('ruler'); if(!ruler) return;
+    let d = new Date(T0);
+    while(d < T1) {
+      const p=pp(d), isYr=d.getMonth()===0||d.getTime()===T0.getTime(), isQ=d.getMonth()%3===0;
+      if(isYr||isQ) {
+        const bal = getSavings(d);
+        const wrap = document.createElement('div');
+        wrap.style.cssText = `position:absolute;left:${p}%;transform:translateX(-50%);text-align:center;white-space:nowrap;top:2px`;
+        const lbl = document.createElement('div');
+        lbl.style.cssText = `font-size:.58rem;color:${isYr?'#6B2737':'#9E7B8A'};font-weight:${isYr?600:400};line-height:1.2`;
+        lbl.textContent = isYr ? d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}) : d.toLocaleDateString('en-US',{month:'short'});
+        const amt = document.createElement('div');
+        amt.style.cssText = `font-size:.56rem;color:#1A6B6B;font-weight:600;margin-top:1px`;
+        amt.textContent = '$'+Math.round(Math.max(0,bal)/1000)+'k';
+        wrap.appendChild(lbl); wrap.appendChild(amt);
         ruler.appendChild(wrap);
       }
-      d=new Date(d.getFullYear(),d.getMonth()+1,1);
+      d = new Date(d.getFullYear(), d.getMonth()+1, 1);
     }
-  },0);
+  }, 0);
 
-  // vendor span section
-  const vphr=document.createElement('tr');vphr.className='ph-row';
-  vphr.innerHTML='<td colspan="5">VENDOR PAYMENT SPANS — DEPOSIT TO FINAL</td>';
-  tbody.appendChild(vphr);
-
-  VENDOR_GANTT.forEach(v=>{
-    const sd=pd(v.start),ed=pd(v.end);
-    const sp=pp(sd),ep=pp(ed),w=Math.max(ep-sp,0.8);
-    const tr=document.createElement('tr');
-    tr.className='tr';tr.dataset.cat='vendor';tr.dataset.phase='vendor';
-    tr.dataset.search=v.n.toLowerCase();
-    tr.innerHTML=`
-      <td><div class="tn" style="color:#4A1C6B">${v.n}</div></td>
-      <td style="text-align:center"><span class="badge bv">Vendor</span></td>
-      <td style="font-size:.75rem;color:#9E7B8A">${fs(v.start)} → ${fs(v.end)}</td>
-      <td style="text-align:center;font-size:.72rem;color:#7D5A9E">dep ${fmt$(v.dep)} · fin ${fmt$(v.fin)}</td>
-      <td class="bc2">
-        <div class="bw">
-          <div class="tline" style="left:${tp}%"></div>
-          <div class="bar" style="left:${sp}%;width:${w}%;background:${v.col};opacity:.55"
-            title="${v.n} · Deposit: ${fmt$(v.dep)} → Final: ${fmt$(v.fin)}"></div>
-          ${w>5?`<span class="blbl" style="left:calc(${sp}% + 4px);max-width:${w}%">${fmt$(v.dep+v.fin)} total</span>`:''}
-        </div>
-      </td>`;
-    tbody.appendChild(tr);
-  });
+  // vendor spans section — built from sheetVendors
+  buildGanttVendorRows(tbody, tp);
 
   // task phases
-  PHASES.forEach(phase=>{
-    const ph=document.createElement('tr');ph.className='ph-row';ph.dataset.phase=phase.l;
-    ph.innerHTML=`<td colspan="5">${phase.l.toUpperCase()}</td>`;
+  PHASES.forEach(phase => {
+    const ph = document.createElement('tr'); ph.className='ph-row'; ph.dataset.phase=phase.l;
+    ph.innerHTML = `<td colspan="5">${phase.l.toUpperCase()}</td>`;
     tbody.appendChild(ph);
 
-    phase.t.forEach((task,ti)=>{
-      const key=tk(phase,task),due=pd(task.d),p=pp(due),col=CC[task.c];
-      const s=statuses[key]||'open',days=Math.round((due-TODAY)/86400000);
-      const sp2=pp(ti>0?pd(phase.t[ti-1].d):T0),w=Math.max(p-sp2,.5);
+    phase.t.forEach((task,ti) => {
+      const key=tk(phase.l,task.n), due=pd(task.d), p=pp(due), col=CC[task.c];
+      const s=statuses[key]||'open', days=Math.round((due-TODAY)/86400000);
+      const sp=pp(ti>0?pd(phase.t[ti-1].d):T0), w=Math.max(p-sp,.5);
 
-      const barH=task.m
-        ?`<div class="bw"><div class="tline" style="left:${tp}%"><div class="tlbl">today</div></div><div class="mstone" style="background:${col};left:calc(${p}% - 5px)" title="${task.n}"></div></div>`
-        :`<div class="bw"><div class="tline" style="left:${tp}%"></div><div class="bar" style="left:${sp2}%;width:${w}%;background:${col};opacity:${task.wd?1:.7}" title="${task.n}${task.amt?' — '+fmt$(task.amt):''}"></div>${w>6?`<span class="blbl" style="left:calc(${sp2}% + 3px);max-width:${w}%">${fs(task.d)}${task.amt?' · '+fmt$(task.amt):''}</span>`:''}</div>`;
+      const barH = task.m
+        ? `<div class="bw"><div class="tline" style="left:${tp}%"><div class="tlbl">today</div></div><div class="mstone" style="background:${col};left:calc(${p}% - 5px)"></div></div>`
+        : `<div class="bw"><div class="tline" style="left:${tp}%"></div><div class="bar" style="left:${sp}%;width:${w}%;background:${col};opacity:${task.wd?1:.7}" title="${task.n}${task.amt?' — '+fmt$(task.amt):''}"></div>${w>6?`<span class="blbl" style="left:calc(${sp}% + 3px);max-width:${w}%">${fs(task.d)}${task.amt?' · '+fmt$(task.amt):''}</span>`:''}</div>`;
 
       const ds=days<0?'color:#C0392B;font-weight:600':days<=60?'color:#B8860B;font-weight:500':'';
       const dsuf=days<0?` <span style="font-size:.62rem">(${Math.abs(days)}d overdue)</span>`:days===0?' <span style="font-size:.62rem;color:#C0392B">(TODAY)</span>':'';
       const opts=['open','in-progress','done'].map(v=>`<option value="${v}" ${s===v?'selected':''}>${v==='open'?'⬜ Open':v==='in-progress'?'🔄 In Progress':'✅ Done'}</option>`).join('');
 
-      const tr=document.createElement('tr');
-      tr.className='tr';tr.dataset.cat=task.c;tr.dataset.phase=phase.l;tr.dataset.search=task.n.toLowerCase();
+      const tr = document.createElement('tr');
+      tr.className='tr'; tr.dataset.cat=task.c; tr.dataset.phase=phase.l; tr.dataset.search=task.n.toLowerCase();
       tr.innerHTML=`
         <td><div class="tn${task.wd?' wd':''}">${task.n}</div></td>
         <td style="text-align:center"><span class="badge ${CB[task.c]}">${CL[task.c]}</span></td>
@@ -580,81 +590,213 @@ function buildTable(){
   });
 }
 
-/* ── VENDOR TABLE ── */
-function buildVendorTable(){
-  const tb=document.getElementById('vtbody');
-  tb.innerHTML='';
-  let grandTotal=0;
-  VENDORS.forEach(v=>{
-    grandTotal+=v.tot;
-    const stCls=v.st==='Paid/Booked'?'sp-paid':v.st==='Booked'?'sp-booked':'sp-est';
-    tb.innerHTML+=`<tr>
-      <td style="font-weight:500">${v.v}</td>
-      <td style="font-size:.75rem;color:var(--mauve)">${v.cat}</td>
-      <td><span class="status-pill ${stCls}">${v.st}</span></td>
-      <td class="amt deposit">${fmt$(v.dep)}</td>
-      <td style="font-size:.75rem;color:var(--mauve)">${v.dm}</td>
-      <td class="amt final">${fmt$(v.fin)}</td>
-      <td style="font-size:.75rem;color:var(--mauve)">${v.fm}</td>
-      <td class="amt" style="font-weight:700">${fmt$(v.tot)}</td>
-    </tr>`;
-  });
-  tb.innerHTML+=`<tr style="background:var(--lt)">
-    <td colspan="7" style="font-weight:600;font-size:.78rem;letter-spacing:.06em">TOTAL PLANNED</td>
-    <td class="amt" style="font-weight:700;color:var(--burg)">${fmt$(grandTotal)}</td>
-  </tr>`;
+// Vendor span rows driven from sheetVendors
+function buildGanttVendorRows(tbody, tp) {
+  tbody = tbody || document.getElementById('tbody');
+  tp = tp !== undefined ? tp : pp(TODAY);
+
+  // Remove existing vendor rows
+  document.querySelectorAll('.vendor-gantt-section').forEach(el => el.remove());
+
+  if (!sheetVendors.length) return;
+
+  const vphr = document.createElement('tr');
+  vphr.className = 'ph-row vendor-gantt-section'; vphr.dataset.phase='vendor';
+  vphr.innerHTML = '<td colspan="5">VENDOR PAYMENT SPANS</td>';
+
+  // Insert after ruler row
+  const ruler = document.getElementById('ruler');
+  if (ruler) {
+    const rulerRow = ruler.closest('tr');
+    rulerRow.after(vphr);
+    let prev = vphr;
+    sheetVendors.forEach(v => {
+      const startMk = v['P1 Month'] || v['Deposit Month'] || '2026-01';
+      const endMk   = v['Final Month'] || '2028-07';
+      const sp = pp(pd(startMk)), ep = pp(pd(endMk)), w = Math.max(ep-sp, 0.8);
+      const total = Number(v.Total)||0;
+      const dep   = Number(v.Deposit)||0;
+      const p1    = Number(v.Partial1)||0;
+      const p2    = Number(v.Partial2)||0;
+      const fin   = total - dep - p1 - p2;
+
+      const tr = document.createElement('tr');
+      tr.className = 'tr vendor-gantt-section'; tr.dataset.cat='ven'; tr.dataset.phase='vendor';
+      tr.dataset.search = (v.Vendor||'').toLowerCase();
+      tr.innerHTML = `
+        <td><div class="tn" style="color:#4A1C6B">${v.Vendor}</div></td>
+        <td style="text-align:center"><span class="badge bv">${v.Category||'Vendor'}</span></td>
+        <td style="font-size:.72rem;color:var(--mauve)">${startMk} → ${endMk}</td>
+        <td style="font-size:.7rem;color:var(--ven)">dep ${fmt$(dep)}${p1?' · p1 '+fmt$(p1):''}${p2?' · p2 '+fmt$(p2):''}</td>
+        <td class="bc2">
+          <div class="bw">
+            <div class="tline" style="left:${tp}%"></div>
+            <div class="bar" style="left:${sp}%;width:${w}%;background:#7D5A9E;opacity:.5" title="${v.Vendor} — ${fmt$(total)} total"></div>
+            ${w>6?`<span class="blbl" style="left:calc(${sp}% + 3px);max-width:${w}%">${fmt$(total)} total</span>`:''}
+          </div>
+        </td>`;
+      prev.after(tr);
+      prev = tr;
+    });
+  }
 }
 
-/* ── BUDGET CHART ── */
-function buildBudgetChart(){
-  const labels=[],savLine=[],depBars=[],finBars=[],paidBars=[];
+// ── EDITABLE VENDOR TABLE ─────────────────────────────────────
+function buildVendorTable() {
+  const tb = document.getElementById('vendor-tbody');
+  tb.innerHTML = '';
+  let grandTotal = 0;
 
-  // payments by month from VENDORS
-  const depByMonth={},finByMonth={},paidByMonth={};
-  VENDORS.forEach(v=>{
-    if(v.dep) depByMonth[v.dm]=(depByMonth[v.dm]||0)+v.dep;
-    if(v.fin) finByMonth[v.fm]=(finByMonth[v.fm]||0)+v.fin;
+  sheetVendors.forEach((v,vi) => {
+    const total = Number(v.Total)||0;
+    grandTotal += total;
+    const dep  = Number(v.Deposit)||0;
+    const p1   = Number(v.Partial1)||0;
+    const p2   = Number(v.Partial2)||0;
+    const fin  = total - dep - p1 - p2;
+
+    const tr = document.createElement('tr');
+    tr.dataset.vendor = v.Vendor;
+    tr.innerHTML = `
+      <td style="font-weight:500">${v.Vendor}</td>
+      <td style="font-size:.72rem;color:var(--mauve)">${v.Category||''}</td>
+      <td class="amt-col">${editableCell(v.Vendor,'Deposit',dep,'amt')}</td>
+      <td class="month-col">${editableCell(v.Vendor,'Deposit Month',v['Deposit Month']||'','month')}</td>
+      <td class="amt-col">${editableCell(v.Vendor,'Partial1',p1||'','amt')}</td>
+      <td class="month-col">${editableCell(v.Vendor,'P1 Month',v['P1 Month']||'','month')}</td>
+      <td class="amt-col">${editableCell(v.Vendor,'Partial2',p2||'','amt')}</td>
+      <td class="month-col">${editableCell(v.Vendor,'P2 Month',v['P2 Month']||'','month')}</td>
+      <td class="amt-col" style="color:var(--pay);font-weight:600">${fmt$(fin)}</td>
+      <td class="month-col">${editableCell(v.Vendor,'Final Month',v['Final Month']||'','month')}</td>
+      <td class="amt-col" style="font-weight:700">${fmt$(total)}</td>
+      <td><button class="save-btn" id="savebtn-${vi}" onclick="saveVendorRow(${vi})">Save</button></td>`;
+    tb.appendChild(tr);
   });
-  // paid = tasks marked done with amt
+
+  tb.innerHTML += `<tr class="tot-row">
+    <td colspan="10" style="font-size:.75rem;letter-spacing:.06em">TOTAL PLANNED</td>
+    <td class="amt-col" style="color:var(--burg);font-weight:700">${fmt$(grandTotal)}</td>
+    <td></td>
+  </tr>`;
+
+  // Show save button when any input in row changes
+  document.querySelectorAll('.editable').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const vi = inp.dataset.vi;
+      const btn = document.getElementById('savebtn-'+vi);
+      if (btn) btn.classList.add('show');
+    });
+  });
+}
+
+function editableCell(vendor, field, value, type) {
+  const vi = sheetVendors.findIndex(v => v.Vendor === vendor);
+  const display = type==='amt' ? (value?'$'+Math.round(Number(value)).toLocaleString():'') : (value||'');
+  return `<input class="editable" data-vendor="${vendor}" data-field="${field}" data-vi="${vi}" data-type="${type}" value="${display}" placeholder="${type==='month'?'YYYY-MM':'$0'}">`;
+}
+
+async function saveVendorRow(vi) {
+  const btn = document.getElementById('savebtn-'+vi);
+  const vendor = sheetVendors[vi].Vendor;
+  const inputs = document.querySelectorAll(`.editable[data-vi="${vi}"]`);
+  const data = { Vendor: vendor };
+
+  inputs.forEach(inp => {
+    let val = inp.value.trim().replace(/[$,]/g,'');
+    if (inp.dataset.type === 'amt') val = Number(val) || 0;
+    data[inp.dataset.field] = val;
+    // Update local sheetVendors
+    sheetVendors[vi][inp.dataset.field] = val;
+  });
+
+  btn.textContent = 'Saving…'; btn.classList.add('show');
+  await post({ action:'updateVendor', data });
+  btn.textContent = '✓ Saved'; btn.classList.add('saved');
+  setTimeout(() => { btn.textContent='Save'; btn.classList.remove('show','saved'); }, 2000);
+
+  // Refresh chart and gantt
+  buildGanttVendorRows();
+  buildBudgetChart();
+  updateStats();
+}
+
+// ── SAVINGS GRID ──────────────────────────────────────────────
+function buildSavingsGrid() {
+  const grid = document.getElementById('savings-grid');
+  grid.innerHTML = '';
+  Object.entries(sheetSavings).sort().forEach(([mk, amt]) => {
+    const cell = document.createElement('div'); cell.className = 'sav-cell';
+    cell.innerHTML = `<div class="sav-month">${mk}</div>
+      <input class="sav-input" data-month="${mk}" value="${amt}" type="number" min="0">`;
+    grid.appendChild(cell);
+  });
+}
+
+async function saveAllSavings() {
+  const inputs = document.querySelectorAll('.sav-input');
+  const updates = [];
+  inputs.forEach(inp => {
+    const month = inp.dataset.month, amount = Number(inp.value)||0;
+    if (sheetSavings[month] !== amount) {
+      sheetSavings[month] = amount;
+      updates.push(post({ action:'updateSavings', month, amount }));
+    }
+  });
+  await Promise.all(updates);
+  setSS('ok', 'Savings saved · ' + new Date().toLocaleTimeString());
+  buildBudgetChart();
+  buildStaticGantt();
+  updateStats();
+}
+
+// ── BUDGET CHART ──────────────────────────────────────────────
+function buildBudgetChart() {
+  const rb = buildRunningBalance();
+  const labels=[], balLine=[], payBars=[], paidBars=[];
+
+  // Payments by month from Payment_Feed
+  const payByMonth={};
+  sheetPayments.forEach(p => {
+    if(p.Amount && p.Month) payByMonth[p.Month]=(payByMonth[p.Month]||0)+Number(p.Amount);
+  });
+
+  // Paid by month from task statuses
+  const paidByMonth={};
   PHASES.forEach(ph=>ph.t.forEach(t=>{
-    if((statuses[tk(ph,t)]||'open')==='done'&&t.amt){
+    if((statuses[tk(ph.l,t.n)]||'open')==='done'&&t.amt){
       const mk=t.d.substring(0,7);
       paidByMonth[mk]=(paidByMonth[mk]||0)+t.amt;
     }
   }));
 
-  let d=new Date(2026,3,1);
-  const end=new Date(2028,7,31);
+  let d = new Date(2026,0,1);
+  const end = new Date(2028,7,31);
   while(d<=end){
     const mk=monthKey(d);
     labels.push(d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}));
-    savLine.push(Math.round(getSavings(d)));
-    depBars.push(depByMonth[mk]||null);
-    finBars.push(finByMonth[mk]||null);
+    balLine.push(rb[mk]!=null ? Math.round(rb[mk]) : null);
+    payBars.push(payByMonth[mk]||null);
     paidBars.push(paidByMonth[mk]||null);
     d=new Date(d.getFullYear(),d.getMonth()+1,1);
   }
 
   // Summary cards
-  const totalPlanned=VENDORS.reduce((a,v)=>a+v.tot,0);
-  const totalPaid=Object.values(paidByMonth).reduce((a,b)=>a+b,0);
-  const savNow=getSavings(TODAY);
-  const remaining=savNow-totalPaid;
+  const totalPlanned = sheetVendors.reduce((a,v)=>a+(Number(v.Total)||0),0);
+  const totalPaid    = Object.values(paidByMonth).reduce((a,b)=>a+b,0);
+  const savNow       = getSavings(TODAY);
   document.getElementById('bcards').innerHTML=`
-    <div class="bcard"><div class="bcard-label">Total budget</div><div class="bcard-val">$32,586</div></div>
-    <div class="bcard"><div class="bcard-label">Planned spend</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
-    <div class="bcard"><div class="bcard-label">Saved to date</div><div class="bcard-val teal">${fmt$(savNow)}</div></div>
+    <div class="bcard"><div class="bcard-label">Total planned spend</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
+    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${savNow<0?'red':'teal'}">${fmt$(savNow)}</div></div>
     <div class="bcard"><div class="bcard-label">Paid so far</div><div class="bcard-val green">${fmt$(totalPaid)}</div></div>
-    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${savNow<0?'red':'green'}">${fmt$(savNow)}</div></div>`;
+    <div class="bcard"><div class="bcard-label">Jul 2028 balance</div><div class="bcard-val ${(rb['2028-07']||0)<0?'red':'green'}">${fmt$(rb['2028-07']||0)}</div></div>`;
 
   if(budgetChart){budgetChart.destroy();budgetChart=null;}
-  budgetChart=new Chart(document.getElementById('budgetChart'),{
+  budgetChart = new Chart(document.getElementById('budgetChart'),{
     type:'bar',
     data:{labels,datasets:[
-      {label:'Savings balance',data:savLine,type:'line',borderColor:'#1A6B6B',backgroundColor:'rgba(26,107,107,0.07)',borderWidth:2,pointRadius:1.5,pointHoverRadius:4,tension:0.3,fill:true,yAxisID:'y',order:1},
-      {label:'Deposit due',data:depBars,backgroundColor:'rgba(192,57,43,0.6)',borderColor:'#C0392B',borderWidth:1,borderRadius:3,yAxisID:'y',order:2},
-      {label:'Final payment due',data:finBars,backgroundColor:'rgba(107,39,55,0.7)',borderColor:'#6B2737',borderWidth:1,borderRadius:3,yAxisID:'y',order:3},
-      {label:'Paid',data:paidBars,backgroundColor:'rgba(30,107,60,0.75)',borderColor:'#1E6B3C',borderWidth:1,borderRadius:3,yAxisID:'y',order:4},
+      {label:'Available balance',data:balLine,type:'line',borderColor:'#1A6B6B',backgroundColor:'rgba(26,107,107,0.07)',borderWidth:2,pointRadius:1.5,pointHoverRadius:4,tension:0.3,fill:true,yAxisID:'y',order:1},
+      {label:'Payments due',data:payBars,backgroundColor:'rgba(192,57,43,0.55)',borderColor:'#C0392B',borderWidth:1,borderRadius:3,yAxisID:'y',order:2},
+      {label:'Paid',data:paidBars,backgroundColor:'rgba(30,107,60,0.75)',borderColor:'#1E6B3C',borderWidth:1,borderRadius:3,yAxisID:'y',order:3},
     ]},
     options:{
       responsive:true,maintainAspectRatio:false,
@@ -671,20 +813,20 @@ function buildBudgetChart(){
   });
 }
 
-/* ── STATUS ── */
-function onSel(sel,key){
-  const v=sel.value;statuses[key]=v;
-  sel.className='ss saving';sel.disabled=true;
-  pushStatus(key,v).finally(()=>{
+// ── STATUS ────────────────────────────────────────────────────
+function onSel(sel, key) {
+  const v = sel.value; statuses[key]=v;
+  sel.className='ss saving'; sel.disabled=true;
+  post({action:'setStatus',taskKey:key,status:v}).finally(()=>{
     sel.className='ss '+(v==='done'?'done':v==='in-progress'?'inp':'');
-    sel.disabled=false;updateStats();
+    sel.disabled=false; updateStats();
     if(document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
   });
 }
 
 function setF(f,btn){
-  curF=f;document.querySelectorAll('.btn').forEach(b=>b.className=b.className.replace(/ on/g,''));
-  btn.className+=' on';applyF();
+  curF=f; document.querySelectorAll('.btn').forEach(b=>b.className=b.className.replace(/ on/g,''));
+  btn.className+=' on'; applyF();
 }
 function doSearch(v){curS=v.toLowerCase();applyF();}
 function applyF(){
@@ -697,7 +839,7 @@ function applyF(){
   });
 }
 
-if(sessionStorage.getItem('ws_ok')==='1')init();
+if(sessionStorage.getItem('ws_ok')==='1') init();
 </script>
 </body>
 </html>
