@@ -296,7 +296,7 @@ const PHASES=[
   {l:'Now — 18+ months out',t:[
     {n:'Coordinator — deposit paid',       c:'pay', d:'2026-04-01',         amt:300},
     {n:'Book Rialto Theater — deposit',    c:'pay', d:'2026-05-15',m:true,  amt:1200},
-    {n:'Book DJ aheProductions — deposit', c:'pay', d:'2026-06-01',         amt:1750},
+    {n:'Book DJ Khalil — deposit', c:'pay', d:'2026-06-01',         amt:1750},
     {n:'Book photographer — deposit',      c:'pay', d:'2026-07-01',         amt:1000},
     {n:'Book caterer — tasting & contract',c:'con', d:'2026-07-01'},
     {n:'Dress — Affirm payments (Feb–Sep 2026)',c:'pay', d:'2026-02-01',     amt:1454},
@@ -645,7 +645,7 @@ function buildBudgetChart(){
     <div class="bcard"><div class="bcard-label">Planned spend</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
     <div class="bcard"><div class="bcard-label">Saved to date</div><div class="bcard-val teal">${fmt$(savNow)}</div></div>
     <div class="bcard"><div class="bcard-label">Paid so far</div><div class="bcard-val green">${fmt$(totalPaid)}</div></div>
-    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${remaining<0?'red':'green'}">${fmt$(remaining)}</div></div>`;
+    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${savNow<0?'red':'green'}">${fmt$(savNow)}</div></div>`;
 
   if(budgetChart){budgetChart.destroy();budgetChart=null;}
   budgetChart=new Chart(document.getElementById('budgetChart'),{
