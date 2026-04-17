@@ -400,19 +400,23 @@ function renderCD() {
 }
 
 function updateStats() {
-  let tot=0,done=0,soon=0,payPend=0,spent=0;
+  let tot=0,done=0,soon=0,payPend=0;
   PHASES.forEach(ph=>ph.t.forEach(t=>{
     const k=tk(ph.l,t.n),days=Math.round((pd(t.d)-TODAY)/86400000),s=statuses[k]||'open';
     tot++;if(s==='done')done++;if(days>=0&&days<=30)soon++;
     if(t.c==='pay'&&days>=0&&s!=='done') payPend++;
-    if(s==='done'&&t.amt) spent+=t.amt;
   }));
+  // Paid so far = sum of Amount where Paid=YES in Payment_Feed
+  const totalPaid = sheetPayments
+    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
+    .reduce((s,p)=>s+(Number(p.Amount)||0),0);
   const savNow = getSavings(TODAY);
   document.getElementById('stats').innerHTML=`
     <div class="stat"><b>${tot}</b> Tasks</div>
     <div class="stat"><b class="g">${done}</b> Done</div>
     <div class="stat"><b class="o">${soon}</b> Due in 30 days</div>
     <div class="stat"><b class="r">${payPend}</b> Pending payments</div>
+    <div class="stat"><b class="g">${fmt$(totalPaid)}</b> Paid so far</div>
     <div class="stat"><b class="t">${fmt$(savNow)}</b> Available now</div>`;
 }
 
@@ -760,14 +764,14 @@ function buildBudgetChart() {
     if(p.Amount && p.Month) payByMonth[p.Month]=(payByMonth[p.Month]||0)+Number(p.Amount);
   });
 
-  // Paid by month from task statuses
+  // Paid by month — from Payment_Feed where Paid=YES
   const paidByMonth={};
-  PHASES.forEach(ph=>ph.t.forEach(t=>{
-    if((statuses[tk(ph.l,t.n)]||'open')==='done'&&t.amt){
-      const mk=t.d.substring(0,7);
-      paidByMonth[mk]=(paidByMonth[mk]||0)+t.amt;
-    }
-  }));
+  sheetPayments
+    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
+    .forEach(p => {
+      if(p.Month && p.Amount)
+        paidByMonth[p.Month]=(paidByMonth[p.Month]||0)+Number(p.Amount);
+    });
 
   let d = new Date(2026,0,1);
   const end = new Date(2028,7,31);
@@ -782,7 +786,9 @@ function buildBudgetChart() {
 
   // Summary cards
   const totalPlanned = sheetVendors.reduce((a,v)=>a+(Number(v.Total)||0),0);
-  const totalPaid    = Object.values(paidByMonth).reduce((a,b)=>a+b,0);
+  const totalPaid    = sheetPayments
+    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
+    .reduce((s,p)=>s+(Number(p.Amount)||0),0);
   const savNow       = getSavings(TODAY);
   document.getElementById('bcards').innerHTML=`
     <div class="bcard"><div class="bcard-label">Total planned spend</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
