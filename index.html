@@ -272,10 +272,10 @@ let savingsData={
 const VENDORS=[
   {v:'Venue',       cat:'Venue',          st:'Paid/Booked', dep:1200, dm:'2026-01', fin:1800,  fm:'2028-07', tot:3000},
   {v:'DJ',          cat:'Entertainment',  st:'Booked',      dep:1750, dm:'2026-07', fin:1750,  fm:'2028-07', tot:3500},
-  {v:'Dress',       cat:'Attire',         st:'Booked',      dep:1200, dm:'2026-07', fin:1000,  fm:'2026-07', tot:2200},
+  {v:'Dress',       cat:'Attire',         st:'Booked',      dep:1454, dm:'2026-02', fin:969,   fm:'2026-07', tot:2423, note:'Affirm $286.76/mo Feb–Sep 2026; shop balance $969 due Jul 2026'},
   {v:'Catering',    cat:'Food & Beverage',st:'Estimate',    dep:1600, dm:'2027-01', fin:6400,  fm:'2028-07', tot:8000},
   {v:'Photography', cat:'Photo',          st:'Estimate',    dep:1000, dm:'2027-02', fin:3000,  fm:'2028-07', tot:4000},
-  {v:'Coordinator', cat:'Planning',       st:'Estimate',    dep:300,  dm:'2027-03', fin:1200,  fm:'2028-07', tot:1500},
+  {v:'Coordinator', cat:'Planning',       st:'Booked',      dep:300,  dm:'2026-04', fin:1200,  fm:'2028-07', tot:1500},
   {v:'Rentals',     cat:'Rentals',        st:'Estimate',    dep:500,  dm:'2027-04', fin:2000,  fm:'2028-07', tot:2500},
   {v:'Florals',     cat:'Decor',          st:'Estimate',    dep:400,  dm:'2027-05', fin:1600,  fm:'2028-07', tot:2000},
   {v:'Bar',         cat:'Bar',            st:'Estimate',    dep:300,  dm:'2027-06', fin:1200,  fm:'2028-07', tot:1500},
@@ -294,11 +294,13 @@ const CL={pay:'Payment',rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm',vendor:'V
 
 const PHASES=[
   {l:'Now — 18+ months out',t:[
+    {n:'Coordinator — deposit paid',       c:'pay', d:'2026-04-01',         amt:300},
     {n:'Book Rialto Theater — deposit',    c:'pay', d:'2026-05-15',m:true,  amt:1200},
-    {n:'Book DJ Khalil — deposit', c:'pay', d:'2026-06-01',         amt:1750},
-    {n:'Book coordinator — deposit', c:'pay', d:'2026-06-01',         amt:300},
+    {n:'Book DJ aheProductions — deposit', c:'pay', d:'2026-06-01',         amt:1750},
     {n:'Book photographer — deposit',      c:'pay', d:'2026-07-01',         amt:1000},
     {n:'Book caterer — tasting & contract',c:'con', d:'2026-07-01'},
+    {n:'Dress — Affirm payments (Feb–Sep 2026)',c:'pay', d:'2026-02-01',     amt:1454},
+    {n:'Dress — shop balance due',             c:'pay', d:'2026-07-01',     amt:969},
     {n:'Book videographer — deposit',      c:'pay', d:'2026-08-01',         amt:750},
     {n:'Book officiant',                   c:'con', d:'2026-09-01'},
     {n:'Book Star Trolley — deposit',      c:'pay', d:'2026-09-01',         amt:500},
@@ -365,18 +367,18 @@ const PHASES=[
 
 // ── VENDOR GANTT rows (deposit→final spans) ───────────────────
 const VENDOR_GANTT=[
-  {n:'Venue: deposit → final',   start:'2026-01', end:'2028-07', col:'#7D5A9E', dep:1200, fin:1800},
-  {n:'DJ: deposit → final',      start:'2026-07', end:'2028-07', col:'#7D5A9E', dep:1750, fin:1750},
-  {n:'Dress: deposit → paid off',start:'2026-07', end:'2026-07', col:'#7D5A9E', dep:1200, fin:1000},
-  {n:'Catering: deposit → final',start:'2027-01', end:'2028-07', col:'#7D5A9E', dep:1600, fin:6400},
-  {n:'Photography: dep → final', start:'2027-02', end:'2028-07', col:'#7D5A9E', dep:1000, fin:3000},
-  {n:'Coordinator: dep → final', start:'2027-03', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
-  {n:'Rentals: dep → final',     start:'2027-04', end:'2028-07', col:'#7D5A9E', dep:500,  fin:2000},
-  {n:'Florals: dep → final',     start:'2027-05', end:'2028-07', col:'#7D5A9E', dep:400,  fin:1600},
-  {n:'Bar: dep → final',         start:'2027-06', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
-  {n:'Cake: dep → final',        start:'2028-01', end:'2028-07', col:'#7D5A9E', dep:150,  fin:450},
-  {n:'Hair & Makeup: dep → final',start:'2028-02',end:'2028-08', col:'#7D5A9E', dep:200,  fin:600},
-  {n:'Transportation: dep → final',start:'2028-04',end:'2028-07',col:'#7D5A9E', dep:500,  fin:2000},
+  {n:'Venue: deposit → final',            start:'2026-01', end:'2028-07', col:'#7D5A9E', dep:1200, fin:1800},
+  {n:'DJ: deposit → final',               start:'2026-07', end:'2028-07', col:'#7D5A9E', dep:1750, fin:1750},
+  {n:'Dress: Affirm Feb–Sep 2026 + shop balance Jul 2026', start:'2026-02', end:'2026-09', col:'#7D5A9E', dep:1454, fin:969},
+  {n:'Coordinator: deposit → final',      start:'2026-04', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
+  {n:'Catering: deposit → final',         start:'2027-01', end:'2028-07', col:'#7D5A9E', dep:1600, fin:6400},
+  {n:'Photography: dep → final',          start:'2027-02', end:'2028-07', col:'#7D5A9E', dep:1000, fin:3000},
+  {n:'Rentals: dep → final',              start:'2027-04', end:'2028-07', col:'#7D5A9E', dep:500,  fin:2000},
+  {n:'Florals: dep → final',              start:'2027-05', end:'2028-07', col:'#7D5A9E', dep:400,  fin:1600},
+  {n:'Bar: dep → final',                  start:'2027-06', end:'2028-07', col:'#7D5A9E', dep:300,  fin:1200},
+  {n:'Cake: dep → final',                 start:'2028-01', end:'2028-07', col:'#7D5A9E', dep:150,  fin:450},
+  {n:'Hair & Makeup: dep → final',        start:'2028-02', end:'2028-08', col:'#7D5A9E', dep:200,  fin:600},
+  {n:'Transportation: dep → final',       start:'2028-04', end:'2028-07', col:'#7D5A9E', dep:500,  fin:2000},
 ];
 
 let statuses={};
