@@ -67,14 +67,17 @@ html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);colo
 .leg{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mauve)}
 .sw{width:14px;height:10px;border-radius:2px}
 .dm{width:9px;height:9px;transform:rotate(45deg);border-radius:1px}
+
 .ctrl{background:#fff;border-bottom:1px solid var(--lt);padding:10px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .flbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);margin-right:2px}
 .btn{padding:4px 12px;border-radius:20px;border:1px solid var(--taupe);background:transparent;font-family:'Jost',sans-serif;font-size:.73rem;cursor:pointer;color:var(--dark);transition:all .15s}
 .btn:hover{background:var(--lt)}
 .btn.on{color:#fff;border-color:transparent}
-.btn.on.all{background:var(--burg)}.btn.on.pay{background:var(--pay)}.btn.on.rsvp{background:var(--rsvp)}.btn.on.diy{background:var(--diy)}.btn.on.con{background:var(--mauve)}.btn.on.ven{background:var(--ven)}
+.btn.on.all{background:var(--burg)}.btn.on.rsvp{background:var(--rsvp)}.btn.on.diy{background:var(--diy)}.btn.on.con{background:var(--mauve)}.btn.on.ven{background:var(--ven)}
 .srch{margin-left:auto;padding:4px 12px;border-radius:20px;border:1px solid var(--taupe);font-family:'Jost',sans-serif;font-size:.73rem;background:var(--cream);color:var(--dark);outline:none;width:180px}
 .srch:focus{border-color:var(--mauve)}
+
+/* table */
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:860px}
 thead th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);padding:7px 10px;border-bottom:1px solid var(--lt);white-space:nowrap;background:#fff;position:sticky;top:0;z-index:2;text-align:left}
@@ -82,32 +85,50 @@ thead th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacin
 .tr td{padding:5px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
 .tr.hidden{display:none}
 .tr:hover td{background:#F7F3EE}
-.tn{font-size:.8rem;max-width:210px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tn{font-size:.8rem;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tn.wd{font-weight:600;color:var(--burg)}
 .badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:.65rem;font-weight:600;white-space:nowrap}
-.bp{background:var(--pay-lt);color:#922B21}.br{background:var(--rsvp-lt);color:#0E4D4D}
-.bd{background:var(--diy-lt);color:#5D4200}.bc{background:var(--con-lt);color:#5C1F2E}
-.bv{background:var(--ven-lt);color:#4A1C6B}
+.br{background:var(--rsvp-lt);color:#0E4D4D}.bd{background:var(--diy-lt);color:#5D4200}
+.bc{background:var(--con-lt);color:#5C1F2E}.bv{background:var(--ven-lt);color:#4A1C6B}
+
+/* gantt bars */
 .bc2{position:relative;padding:3px 0;min-width:380px}
-.bw{position:relative;width:100%;height:18px}
-.bar{position:absolute;height:13px;top:2px;border-radius:3px}
-.bar:hover{opacity:.75}
-.blbl{position:absolute;font-size:.6rem;white-space:nowrap;top:3px;color:#fff;pointer-events:none;font-weight:500;padding-left:4px;overflow:hidden}
-.mstone{position:absolute;width:10px;height:10px;top:3px;transform:rotate(45deg);border-radius:1px}
+.bw{position:relative;width:100%;height:20px}
+.bar{position:absolute;height:14px;top:3px;border-radius:3px}
+.bar-paid{position:absolute;height:14px;top:3px;border-radius:3px;background:rgba(30,107,60,0.75)}
+.bar:hover{opacity:.8}
+.blbl{position:absolute;font-size:.6rem;white-space:nowrap;top:4px;color:#fff;pointer-events:none;font-weight:500;padding-left:4px;overflow:hidden}
+.mstone{position:absolute;width:10px;height:10px;top:4px;transform:rotate(45deg);border-radius:1px}
 .tline{position:absolute;top:0;bottom:0;width:1.5px;background:var(--pay);opacity:.55;z-index:1}
 .tlbl{position:absolute;top:-13px;font-size:.58rem;color:var(--pay);transform:translateX(-50%);font-weight:600;white-space:nowrap}
+
+/* ruler */
 .rr td{padding:0;background:#fff;border-bottom:1px solid var(--lt)}
 .ri{position:relative;height:40px;margin-left:355px}
+
+/* status pill */
 .ss{border:.5px solid var(--taupe);border-radius:10px;padding:2px 5px;font-family:'Jost',sans-serif;font-size:.68rem;background:var(--cream);color:var(--dark);cursor:pointer;outline:none;transition:all .2s}
 .ss.done{background:#D5F0E0;color:#1E6B3C;border-color:#1E6B3C}
 .ss.inp{background:#FFF3CC;color:#5D4200;border-color:#B8860B}
-.ss.saving{opacity:.5;pointer-events:none}
+
+/* vendor payment row */
+.ven-row td{padding:6px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle;background:#FAFAF8}
+.ven-row:hover td{background:#F3F0F8}
+.ven-name{font-size:.82rem;font-weight:500;color:#4A1C6B}
+.ven-total{font-size:.78rem;font-weight:600;color:var(--dark)}
+.ven-paid{font-size:.78rem;font-weight:600;color:#1E6B3C}
+.ven-remain{font-size:.78rem;font-weight:600;color:var(--pay)}
+.paid-wrap{display:flex;align-items:center;gap:4px}
+.paid-inp{width:80px;border:.5px solid var(--taupe);border-radius:6px;padding:3px 7px;font-family:'Jost',sans-serif;font-size:.78rem;background:#fff;color:var(--dark);outline:none;text-align:right}
+.paid-inp:focus{border-color:var(--ven)}
+.paid-inp.full{background:#D5F0E0;color:#1E6B3C;border-color:#1E6B3C}
+.paid-inp.partial{background:#FFF3CC;color:#5D4200;border-color:#B8860B}
+.save-pill{padding:2px 8px;border-radius:10px;border:1px solid var(--ven);background:transparent;color:var(--ven);font-family:'Jost',sans-serif;font-size:.65rem;cursor:pointer;opacity:0;transition:opacity .15s;white-space:nowrap}
+.save-pill.show{opacity:1}
+.save-pill:hover{background:var(--ven);color:#fff}
 
 /* ── BUDGET PANEL ── */
 .bpanel{padding:24px 28px 40px}
-.bpanel-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
-.bpanel-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--burg)}
-.bpanel-note{font-size:.72rem;color:var(--mauve);font-style:italic}
 .bcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
 .bcard{background:#fff;border:.5px solid var(--lt);border-radius:8px;padding:12px 14px}
 .bcard-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);margin-bottom:3px}
@@ -118,26 +139,19 @@ thead th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacin
 .chart-leg span{display:flex;align-items:center;gap:5px}
 .cl-sq{width:11px;height:9px;border-radius:2px;display:inline-block}
 .cl-ln{width:18px;height:2px;display:inline-block}
-
-/* editable vendor grid */
 .section-title{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--burg);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--lt)}
-.vendor-grid{width:100%;border-collapse:collapse;font-size:.78rem;margin-bottom:28px}
-.vendor-grid th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mauve);padding:6px 8px;border-bottom:1px solid var(--lt);text-align:left;background:#fff}
-.vendor-grid td{padding:5px 8px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
-.vendor-grid tr:hover td{background:#F7F3EE}
-.editable{border:.5px solid transparent;border-radius:4px;padding:3px 6px;font-family:'Jost',sans-serif;font-size:.78rem;background:transparent;color:var(--dark);width:100%;min-width:60px;outline:none;cursor:text}
-.editable:focus{background:#fff;border-color:var(--mauve);cursor:text}
-.editable:hover{background:var(--lt)}
-.save-btn{padding:2px 8px;border-radius:4px;border:1px solid var(--burg);background:transparent;color:var(--burg);font-family:'Jost',sans-serif;font-size:.65rem;cursor:pointer;opacity:0;transition:opacity .15s}
-.save-btn.show{opacity:1}
-.save-btn:hover{background:var(--burg);color:#fff}
-.save-btn.saved{border-color:#1E6B3C;color:#1E6B3C}
-.tot-row td{font-weight:600;background:var(--lt) !important}
-.amt-col{text-align:right;font-weight:500}
-.month-col{color:var(--mauve);font-size:.72rem}
 
-/* savings editor */
-.savings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:12px}
+/* vendor breakdown table in budget */
+.vb-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-bottom:28px}
+.vb-table th{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mauve);padding:6px 10px;border-bottom:1px solid var(--lt);text-align:left}
+.vb-table td{padding:7px 10px;border-bottom:1px solid #EDE6DA;vertical-align:middle}
+.vb-table tr:hover td{background:#F7F3EE}
+.vb-table .ar{text-align:right;font-weight:500}
+.progress-bar{height:6px;background:var(--lt);border-radius:3px;overflow:hidden;min-width:80px}
+.progress-fill{height:100%;border-radius:3px;background:#1E6B3C;transition:width .3s}
+
+/* savings grid */
+.savings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:12px}
 .sav-cell{background:#fff;border:.5px solid var(--lt);border-radius:6px;padding:8px 10px}
 .sav-month{font-size:.65rem;color:var(--mauve);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
 .sav-input{border:none;border-bottom:.5px solid var(--taupe);font-family:'Jost',sans-serif;font-size:.85rem;font-weight:500;color:var(--sav);background:transparent;width:100%;outline:none;padding:1px 0}
@@ -183,31 +197,30 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
   <!-- GANTT PANEL -->
   <div class="panel on" id="panel-gantt">
     <div class="leg-bar">
-      <div class="leg"><div class="sw" style="background:var(--pay)"></div>Payment</div>
+      <div class="leg"><div class="sw" style="background:var(--ven);opacity:.5"></div>Vendor span (click to log payment)</div>
+      <div class="leg"><div class="sw" style="background:#1E6B3C;opacity:.75"></div>Paid portion</div>
       <div class="leg"><div class="sw" style="background:var(--rsvp)"></div>RSVP/Admin</div>
       <div class="leg"><div class="sw" style="background:var(--diy)"></div>DIY</div>
       <div class="leg"><div class="sw" style="background:var(--con)"></div>Book/Confirm</div>
-      <div class="leg"><div class="sw" style="background:var(--ven);opacity:.6"></div>Vendor span</div>
       <div class="leg"><div class="dm" style="background:var(--pay)"></div>Milestone</div>
       <div class="leg"><div style="width:12px;height:2px;background:var(--pay);opacity:.6"></div>Today</div>
     </div>
     <div class="ctrl">
       <span class="flbl">Filter:</span>
       <button class="btn on all" onclick="setF('all',this)">All</button>
-      <button class="btn pay" onclick="setF('pay',this)">💰 Payments</button>
+      <button class="btn ven" onclick="setF('ven',this)">🏷 Vendors</button>
       <button class="btn rsvp" onclick="setF('rsvp',this)">📋 RSVP</button>
       <button class="btn diy" onclick="setF('diy',this)">🎨 DIY</button>
       <button class="btn con" onclick="setF('con',this)">✅ Confirm</button>
-      <button class="btn ven" onclick="setF('ven',this)">🏷 Vendors</button>
       <input class="srch" type="text" placeholder="Search…" oninput="doSearch(this.value)">
     </div>
     <div class="tw">
       <table>
         <thead><tr>
-          <th style="width:200px">Task</th>
-          <th style="width:100px;text-align:center">Category</th>
-          <th style="width:120px">Due date</th>
-          <th style="width:120px;text-align:center">Status</th>
+          <th style="width:160px">Vendor / Task</th>
+          <th style="width:90px;text-align:center">Type</th>
+          <th style="width:100px">Due / Range</th>
+          <th style="width:160px">Payment tracker</th>
           <th>Timeline — Jan 2026 → Aug 2028</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
@@ -218,36 +231,25 @@ footer{background:var(--burg);padding:14px;text-align:center;font-size:.72rem;co
   <!-- BUDGET PANEL -->
   <div class="panel" id="panel-budget">
     <div class="bpanel">
-      <div class="bpanel-top">
-        <div class="bpanel-title">Budget &amp; Savings</div>
-        <div class="bpanel-note">Edit any cell below — changes save to Google Sheets and update the chart automatically</div>
-      </div>
-
       <div class="bcards" id="bcards"></div>
-
       <div class="chart-wrap">
         <div class="chart-leg">
           <span><span class="cl-ln" style="background:#1A6B6B"></span>Available balance</span>
           <span><span class="cl-sq" style="background:rgba(192,57,43,0.55)"></span>Payments due</span>
           <span><span class="cl-sq" style="background:rgba(30,107,60,0.7)"></span>Paid</span>
         </div>
-        <canvas id="budgetChart" role="img" aria-label="Wedding savings vs payments by month"></canvas>
+        <canvas id="budgetChart" role="img" aria-label="Wedding savings vs payments chart"></canvas>
       </div>
-
-      <div class="section-title">Vendor Payments — click any amount or month to edit</div>
-      <table class="vendor-grid" id="vendor-table">
+      <div class="section-title">Vendor breakdown</div>
+      <table class="vb-table" id="vb-table">
         <thead><tr>
           <th>Vendor</th><th>Category</th>
-          <th class="amt-col">Deposit</th><th class="month-col">Month</th>
-          <th class="amt-col">Partial 1</th><th class="month-col">Month</th>
-          <th class="amt-col">Partial 2</th><th class="month-col">Month</th>
-          <th class="amt-col">Final</th><th class="month-col">Final Month</th>
-          <th class="amt-col">Total</th><th></th>
+          <th class="ar">Total</th><th class="ar">Paid</th><th class="ar">Remaining</th>
+          <th style="min-width:100px">Progress</th>
         </tr></thead>
-        <tbody id="vendor-tbody"></tbody>
+        <tbody id="vb-tbody"></tbody>
       </table>
-
-      <div class="section-title">Monthly Savings Contributions — edit to update your balance projection</div>
+      <div class="section-title">Monthly savings contributions</div>
       <div class="savings-grid" id="savings-grid"></div>
       <button onclick="saveAllSavings()" style="padding:6px 16px;border-radius:4px;border:1px solid var(--burg);background:transparent;color:var(--burg);font-family:'Jost',sans-serif;font-size:.75rem;cursor:pointer;margin-top:4px">Save savings changes</button>
     </div>
@@ -263,32 +265,30 @@ const WEDDING = new Date(2028,7,4);
 const TODAY   = new Date(); TODAY.setHours(0,0,0,0);
 const T0 = new Date(2026,0,1), T1 = new Date(2028,8,15), TS = T1-T0;
 
-// ── Live data from Google Sheets ──────────────────────────────
-let sheetVendors  = [];   // Vendor_Budget rows
-let sheetPayments = [];   // Payment_Feed rows
-let sheetSavings  = {};   // { 'YYYY-MM': contribution }
-let statuses      = {};
+let sheetVendors  = [];
+let sheetPayments = [];
+let sheetSavings  = {};
+let statuses      = {};  // stores task statuses AND vendor paid amounts (key: vendor|paid)
 let syncOk        = false;
 let budgetChart   = null;
 let curF = 'all', curS = '';
 
-// ── Computed running balance ──────────────────────────────────
+// ── Running balance ───────────────────────────────────────────
 function buildRunningBalance() {
-  // Start from first savings month, accumulate contributions then subtract payments
   const allMonths = new Set([
     ...Object.keys(sheetSavings),
-    ...sheetPayments.map(p => p.Month)
+    ...sheetPayments.map(p=>p.Month).filter(Boolean)
   ]);
-  const sorted = [...allMonths].filter(Boolean).sort();
+  const sorted = [...allMonths].sort();
   let balance = 0;
   const running = {};
   sorted.forEach(mk => {
     balance += sheetSavings[mk] || 0;
-    const paid = sheetPayments
-      .filter(p => p.Month === mk)
-      .reduce((s, p) => s + (Number(p.Amount) || 0), 0);
-    balance -= paid;
-    running[mk] = Math.round(balance * 100) / 100;
+    const out = sheetPayments
+      .filter(p=>p.Month===mk)
+      .reduce((s,p)=>s+(Number(p.Amount)||0),0);
+    balance -= out;
+    running[mk] = Math.round(balance*100)/100;
   });
   return running;
 }
@@ -297,507 +297,431 @@ function getSavings(d) {
   const mk = monthKey(d);
   const rb = buildRunningBalance();
   const keys = Object.keys(rb).sort();
-  if (rb[mk] !== undefined) return rb[mk];
-  let best = 0;
-  for (const k of keys) { if (k <= mk) best = rb[k]; }
+  if (rb[mk]!==undefined) return rb[mk];
+  let best=0;
+  for(const k of keys){if(k<=mk) best=rb[k];}
   return best;
 }
 
 // ── Gate ──────────────────────────────────────────────────────
 function unlock() {
-  if (document.getElementById('pwi').value === PW) {
-    const g = document.getElementById('gate');
-    g.style.opacity = '0';
-    setTimeout(() => {
-      g.style.display = 'none';
-      document.getElementById('app').style.display = 'flex';
+  if(document.getElementById('pwi').value===PW){
+    const g=document.getElementById('gate');
+    g.style.opacity='0';
+    setTimeout(()=>{
+      g.style.display='none';
+      document.getElementById('app').style.display='flex';
       sessionStorage.setItem('ws_ok','1');
       init();
-    }, 400);
+    },400);
   } else {
-    document.getElementById('pwe').textContent = 'Incorrect password — try again';
-    document.getElementById('pwi').value = '';
+    document.getElementById('pwe').textContent='Incorrect password — try again';
+    document.getElementById('pwi').value='';
   }
 }
-if (sessionStorage.getItem('ws_ok') === '1') {
-  document.getElementById('gate').style.display = 'none';
-  document.getElementById('app').style.display = 'flex';
+if(sessionStorage.getItem('ws_ok')==='1'){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='flex';
 }
 
 // ── Sync ──────────────────────────────────────────────────────
-function setSS(state, msg) {
-  document.getElementById('sdot').className = 'sdot ' + state;
-  document.getElementById('smsg').textContent = msg;
-  syncOk = state === 'ok';
+function setSS(state,msg){
+  document.getElementById('sdot').className='sdot '+state;
+  document.getElementById('smsg').textContent=msg;
+  syncOk=state==='ok';
 }
 
-async function loadAll() {
-  setSS('spin', 'Loading from Google Sheets…');
-  try {
-    const r = await fetch(SURL, { method:'GET', redirect:'follow' });
-    const d = await r.json();
-    if (d.ok) {
-      statuses      = d.statuses  || {};
-      sheetVendors  = d.vendors   || [];
-      sheetPayments = d.payments  || [];
-      sheetSavings  = d.savings   || {};
-      setSS('ok', 'Synced · ' + new Date().toLocaleTimeString());
-      refreshDropdowns();
-      buildGanttVendorRows();
-      buildVendorTable();
+async function loadAll(){
+  setSS('spin','Loading from Google Sheets…');
+  try{
+    const r=await fetch(SURL,{method:'GET',redirect:'follow'});
+    const d=await r.json();
+    if(d.ok){
+      statuses     =d.statuses ||{};
+      sheetVendors =d.vendors  ||[];
+      sheetPayments=d.payments ||[];
+      sheetSavings =d.savings  ||{};
+      setSS('ok','Synced · '+new Date().toLocaleTimeString());
+      buildGantt();
+      buildVendorBreakdown();
       buildSavingsGrid();
       updateStats();
-      if (document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
-    } else setSS('err', 'Google Sheets error — ' + (d.error||''));
-  } catch(e) { setSS('err', 'Could not connect — check URL'); }
+      if(document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
+    } else setSS('err','Google Sheets error: '+(d.error||''));
+  }catch(e){ setSS('err','Could not connect'); }
 }
 
-async function post(payload) {
-  if (!syncOk) return;
-  try {
-    const r = await fetch(SURL, {
-      method:'POST', redirect:'follow',
+async function post(payload){
+  if(!syncOk) return;
+  try{
+    await fetch(SURL,{method:'POST',redirect:'follow',
       headers:{'Content-Type':'text/plain'},
-      body: JSON.stringify(payload)
-    });
-    const d = await r.json();
-    setSS('ok', 'Saved · ' + new Date().toLocaleTimeString());
-    return d;
-  } catch(e) { setSS('err', 'Save failed'); }
-}
-
-function refreshDropdowns() {
-  document.querySelectorAll('.ss').forEach(s => {
-    const k = s.dataset.key, v = statuses[k] || 'open';
-    s.value = v;
-    s.className = 'ss ' + (v==='done'?'done':v==='in-progress'?'inp':'');
-  });
+      body:JSON.stringify(payload)});
+    setSS('ok','Saved · '+new Date().toLocaleTimeString());
+  }catch(e){ setSS('err','Save failed'); }
 }
 
 // ── Helpers ───────────────────────────────────────────────────
-function pd(s) { const[y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d||1); }
-function pp(d) { return Math.max(0,Math.min(100,((d-T0)/TS)*100)); }
-function fd(s) { return pd(s).toLocaleDateString('en-US',{month:'short',day:s.length>7?'numeric':undefined,year:'numeric'}); }
-function fs(s) { return pd(s).toLocaleDateString('en-US',{month:'short',year:'2-digit'}); }
-function monthKey(d) { return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
-function fmt$(n) { return n!=null&&n!==''?'$'+Math.round(Number(n)).toLocaleString():'—'; }
-function tk(phase,task) { return phase+'|'+task; }
+function pd(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d||1);}
+function pp(d){return Math.max(0,Math.min(100,((d-T0)/TS)*100));}
+function fd(s){return pd(s).toLocaleDateString('en-US',{month:'short',day:s.length>7?'numeric':undefined,year:'numeric'});}
+function fs(s){return pd(s).toLocaleDateString('en-US',{month:'short',year:'2-digit'});}
+function monthKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
+function fmt$(n){return n!=null?'$'+Math.round(Number(n)).toLocaleString():'—';}
+function tk(phase,task){return phase+'|'+task;}
+function venKey(name){return 'vendor|'+name+'|paid';}
 
 // ── Init ──────────────────────────────────────────────────────
-function init() {
+function init(){
   renderCD();
-  buildStaticGantt();
+  buildGantt();
   updateStats();
   loadAll();
 }
 
-function renderCD() {
-  const tot = Math.round((WEDDING-TODAY)/86400000);
-  document.getElementById('cd').innerHTML = `
+function renderCD(){
+  const tot=Math.round((WEDDING-TODAY)/86400000);
+  document.getElementById('cd').innerHTML=`
     <div class="cdi"><div class="cdn">${tot.toLocaleString()}</div><div class="cdl">Days</div></div>
     <div class="cdi"><div class="cdn">${Math.floor(tot/30.44)}</div><div class="cdl">Months</div></div>
     <div class="cdi"><div class="cdn">${Math.floor(tot/7).toLocaleString()}</div><div class="cdl">Weeks</div></div>`;
 }
 
-function updateStats() {
-  let tot=0,done=0,soon=0,payPend=0;
-  PHASES.forEach(ph=>ph.t.forEach(t=>{
-    const k=tk(ph.l,t.n),days=Math.round((pd(t.d)-TODAY)/86400000),s=statuses[k]||'open';
+function updateStats(){
+  let tot=0,done=0,soon=0;
+  TASKS.forEach(t=>{
+    const k=tk(t.phase,t.n),days=Math.round((pd(t.d)-TODAY)/86400000),s=statuses[k]||'open';
     tot++;if(s==='done')done++;if(days>=0&&days<=30)soon++;
-    if(t.c==='pay'&&days>=0&&s!=='done') payPend++;
-  }));
-  // Paid so far = sum of Amount where Paid=YES in Payment_Feed
-  const totalPaid = sheetPayments
-    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
-    .reduce((s,p)=>s+(Number(p.Amount)||0),0);
-  const savNow = getSavings(TODAY);
+  });
+  const totalPaid=getTotalPaid();
+  const savNow=getSavings(TODAY);
+  const totalBudget=sheetVendors.reduce((a,v)=>a+(Number(v.Total)||0),0);
   document.getElementById('stats').innerHTML=`
     <div class="stat"><b>${tot}</b> Tasks</div>
     <div class="stat"><b class="g">${done}</b> Done</div>
     <div class="stat"><b class="o">${soon}</b> Due in 30 days</div>
-    <div class="stat"><b class="r">${payPend}</b> Pending payments</div>
     <div class="stat"><b class="g">${fmt$(totalPaid)}</b> Paid so far</div>
-    <div class="stat"><b class="t">${fmt$(savNow)}</b> Available now</div>`;
+    <div class="stat"><b class="t">${fmt$(savNow)}</b> Available now</div>
+    <div class="stat"><b class="r">${fmt$(totalBudget-totalPaid)}</b> Still owed</div>`;
+}
+
+function getTotalPaid(){
+  return sheetVendors.reduce((sum,v)=>{
+    return sum+(Number(statuses[venKey(v.Vendor)])||0);
+  },0);
 }
 
 // ── TABS ──────────────────────────────────────────────────────
-function switchTab(id, btn) {
+function switchTab(id,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('panel-'+id).classList.add('on');
-  if (id==='budget') buildBudgetChart();
+  if(id==='budget') buildBudgetChart();
 }
 
-// ── STATIC TASK SCHEDULE ──────────────────────────────────────
-const CC = {pay:'#C0392B',rsvp:'#1A6B6B',diy:'#B8860B',con:'#9E7B8A',ven:'#7D5A9E'};
-const CB = {pay:'bp',rsvp:'br',diy:'bd',con:'bc',ven:'bv'};
-const CL = {pay:'Payment',rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm',ven:'Vendor'};
-
-const PHASES = [
-  {l:'Now — 18+ months out',t:[
-    {n:'Coordinator — deposit paid',        c:'pay',d:'2026-04-01',amt:300},
-    {n:'Book Rialto Theater — deposit',     c:'pay',d:'2026-05-15',m:true,amt:1200},
-    {n:'Book DJ Khalil — deposit',          c:'pay',d:'2026-06-01',amt:1750},
-    {n:'Book photographer — deposit',       c:'pay',d:'2026-07-01',amt:1000},
-    {n:'Book caterer — tasting & contract', c:'con',d:'2026-07-01'},
-    {n:'Dress — Affirm payments (Feb–Sep)', c:'pay',d:'2026-02-01',amt:1454},
-    {n:'Dress — shop balance due',          c:'pay',d:'2026-07-01',amt:969},
-    {n:'Book videographer — deposit',       c:'pay',d:'2026-08-01',amt:750},
-    {n:'Book officiant',                    c:'con',d:'2026-09-01'},
-    {n:'Book Star Trolley — deposit',       c:'pay',d:'2026-09-01',amt:500},
-    {n:'Book florist — deposit',            c:'pay',d:'2026-10-01',amt:400},
-    {n:'Book hair & makeup — deposit',      c:'pay',d:'2026-10-01',amt:200},
-  ]},
-  {l:'12–18 months out',t:[
-    {n:'Book hotel room block',             c:'con',d:'2026-12-01'},
-    {n:'Finalize guest list (~60 guests)',  c:'rsvp',d:'2027-01-01'},
-    {n:'Catering — deposit',               c:'pay',d:'2027-01-01',amt:1600},
-    {n:'Order wedding dress',              c:'con',d:'2027-01-15',m:true},
-    {n:'Photography — deposit',            c:'pay',d:'2027-02-01',amt:1000},
-    {n:'Save-the-dates — design',          c:'diy',d:'2027-02-01'},
-    {n:'Save-the-dates — mail',            c:'rsvp',d:'2027-02-15'},
-    {n:'Coordinator — deposit',            c:'pay',d:'2027-03-01',amt:300},
-    {n:'Wedding website — finalize',       c:'diy',d:'2027-03-01'},
-    {n:'Cake/desserts — deposit',          c:'pay',d:'2027-03-01',amt:150},
-    {n:'Rentals — deposit',                c:'pay',d:'2027-04-01',amt:500},
-    {n:'Florals — deposit',                c:'pay',d:'2027-05-01',amt:400},
-  ]},
-  {l:'9–12 months out',t:[
-    {n:'Ceremony details with officiant',  c:'con',d:'2027-05-01'},
-    {n:'Book rehearsal dinner venue',      c:'con',d:'2027-05-01'},
-    {n:'Invitation suite — design',        c:'diy',d:'2027-05-15'},
-    {n:'Bar — deposit',                    c:'pay',d:'2027-06-01',amt:300},
-    {n:'Finalize florals with florist',    c:'con',d:'2027-06-01'},
-    {n:"Book Devin's suit",                c:'con',d:'2027-06-01'},
-    {n:'Book Airbnb/villa — deposit',      c:'pay',d:'2027-06-01',amt:250},
-    {n:'Coordinator — partial payment',    c:'pay',d:'2027-06-01',amt:500},
-    {n:'Catering — partial 1',             c:'pay',d:'2027-07-01',amt:1000},
-    {n:'Book honeymoon — flights & hotel', c:'con',d:'2027-07-15'},
-    {n:'Photography — partial 1',          c:'pay',d:'2027-08-01',amt:750},
-    {n:'Invitation order & proof',         c:'diy',d:'2027-09-01'},
-    {n:'Catering — partial 2',             c:'pay',d:'2027-10-01',amt:1000},
-    {n:'Coordinator — partial payment 2',  c:'pay',d:'2027-10-01',amt:400},
-  ]},
-  {l:'6–9 months out',t:[
-    {n:'Order wedding favors',             c:'diy',d:'2027-11-01'},
-    {n:'Photography — partial 2',          c:'pay',d:'2027-12-01',amt:750},
-    {n:'Mail invitations',                 c:'rsvp',d:'2027-12-01'},
-    {n:'RSVP deadline',                    c:'rsvp',d:'2028-01-15',m:true},
-    {n:'Catering — partial 3',             c:'pay',d:'2028-01-01',amt:1000},
-    {n:'Finalize menu with caterer',       c:'con',d:'2028-01-20'},
-    {n:'Hair & makeup — deposit',          c:'pay',d:'2028-02-01',amt:200},
-    {n:'Create seating chart',             c:'diy',d:'2028-02-01'},
-    {n:'Ceremony programs — design',       c:'diy',d:'2028-02-15'},
-    {n:'Airbnb — partial 1',               c:'pay',d:'2028-03-01',amt:500},
-    {n:'Stationery — order & pay',         c:'pay',d:'2028-03-01',amt:500},
-    {n:'Signage & décor elements',         c:'diy',d:'2028-03-01'},
-    {n:'Final dress fitting',              c:'con',d:'2028-03-01'},
-    {n:'Hair & makeup trial run',          c:'con',d:'2028-03-15'},
-    {n:'Airbnb — partial 2',               c:'pay',d:'2028-04-01',amt:500},
-    {n:'Transportation — deposit',         c:'pay',d:'2028-04-01',amt:500},
-    {n:"Devin's suit — purchase",          c:'pay',d:'2028-05-01',amt:800},
-    {n:'Dress alterations',                c:'pay',d:'2028-05-01',amt:600},
-  ]},
-  {l:'1–3 months out',t:[
-    {n:'All signage & décor — print',      c:'diy',d:'2028-05-01'},
-    {n:'Venue — final payment',            c:'pay',d:'2028-07-01',m:true,amt:1800},
-    {n:'Catering — final payment',         c:'pay',d:'2028-07-01',amt:3400},
-    {n:'Photography — final payment',      c:'pay',d:'2028-07-01',amt:1500},
-    {n:'DJ Khalil — final payment',        c:'pay',d:'2028-07-01',amt:1750},
-    {n:'Florals — final payment',          c:'pay',d:'2028-07-01',amt:1600},
-    {n:'Coordinator — final payment',      c:'pay',d:'2028-07-01',amt:1000},
-    {n:'Rentals — final payment',          c:'pay',d:'2028-07-01',amt:2000},
-    {n:'Bar — final payment',              c:'pay',d:'2028-07-01',amt:1200},
-    {n:'Cake — final payment',             c:'pay',d:'2028-07-01',amt:450},
-    {n:'Trolley — final payment',          c:'pay',d:'2028-07-01',amt:2000},
-    {n:'Airbnb — final balance',           c:'pay',d:'2028-07-01',amt:750},
-    {n:'Marriage license',                 c:'rsvp',d:'2028-07-01',m:true,amt:100},
-    {n:'Tips / misc buffer',               c:'pay',d:'2028-07-01',amt:1000},
-    {n:'Confirm all vendors + timeline',   c:'con',d:'2028-07-01'},
-    {n:'Assemble programs & favors',       c:'diy',d:'2028-07-15'},
-    {n:'Final headcount to caterer',       c:'rsvp',d:'2028-07-18'},
-    {n:'Hair & makeup — final payment',    c:'pay',d:'2028-08-01',amt:600},
-  ]},
-  {l:'Wedding week',t:[
-    {n:'Wedding rehearsal',                c:'con',d:'2028-08-03'},
-    {n:'Rehearsal dinner',                 c:'con',d:'2028-08-03'},
-    {n:'Pick up florals',                  c:'con',d:'2028-08-04'},
-    {n:'⭐ WEDDING DAY',                   c:'con',d:'2028-08-04',m:true,wd:true},
-  ]},
+// ── NON-PAYMENT TASKS (RSVP, DIY, Confirm, Milestones) ───────
+const TASKS = [
+  // Book/Confirm
+  {phase:'Planning',n:'Book caterer — tasting & contract',c:'con',d:'2026-07-01'},
+  {phase:'Planning',n:'Book officiant',                   c:'con',d:'2026-09-01'},
+  {phase:'Planning',n:'Book hotel room block',            c:'con',d:'2026-12-01'},
+  {phase:'Planning',n:'Order wedding dress',              c:'con',d:'2027-01-15',m:true},
+  {phase:'Planning',n:'Ceremony details with officiant',  c:'con',d:'2027-05-01'},
+  {phase:'Planning',n:'Book rehearsal dinner venue',      c:'con',d:'2027-05-01'},
+  {phase:'Planning',n:'Finalize florals with florist',    c:'con',d:'2027-06-01'},
+  {phase:"Planning",n:"Book Devin's suit",                c:'con',d:'2027-06-01'},
+  {phase:'Planning',n:'Book honeymoon — flights & hotel', c:'con',d:'2027-07-15'},
+  {phase:'Planning',n:'Finalize menu with caterer',       c:'con',d:'2028-01-20'},
+  {phase:'Planning',n:'Final dress fitting',              c:'con',d:'2028-03-01'},
+  {phase:'Planning',n:'Hair & makeup trial run',          c:'con',d:'2028-03-15'},
+  {phase:'Planning',n:'Confirm all vendors + timeline',   c:'con',d:'2028-07-01'},
+  {phase:'Planning',n:'Wedding rehearsal',                c:'con',d:'2028-08-03'},
+  {phase:'Planning',n:'Rehearsal dinner',                 c:'con',d:'2028-08-03'},
+  {phase:'Planning',n:'Pick up florals',                  c:'con',d:'2028-08-04'},
+  // RSVP/Admin
+  {phase:'Admin',   n:'Finalize guest list (~60 guests)', c:'rsvp',d:'2027-01-01'},
+  {phase:'Admin',   n:'Save-the-dates — mail',            c:'rsvp',d:'2027-02-15'},
+  {phase:'Admin',   n:'Mail invitations',                 c:'rsvp',d:'2027-12-01'},
+  {phase:'Admin',   n:'RSVP deadline',                    c:'rsvp',d:'2028-01-15',m:true},
+  {phase:'Admin',   n:'Create seating chart',             c:'rsvp',d:'2028-02-01'},
+  {phase:'Admin',   n:'Final headcount to caterer',       c:'rsvp',d:'2028-07-18'},
+  {phase:'Admin',   n:'Marriage license',                 c:'rsvp',d:'2028-07-01',m:true},
+  // DIY
+  {phase:'DIY',     n:'Save-the-dates — design',          c:'diy', d:'2027-02-01'},
+  {phase:'DIY',     n:'Wedding website — finalize',       c:'diy', d:'2027-03-01'},
+  {phase:'DIY',     n:'Invitation suite — design',        c:'diy', d:'2027-05-15'},
+  {phase:'DIY',     n:'Invitation order & proof',         c:'diy', d:'2027-09-01'},
+  {phase:'DIY',     n:'Order wedding favors',             c:'diy', d:'2027-11-01'},
+  {phase:'DIY',     n:'Ceremony programs — design',       c:'diy', d:'2028-02-15'},
+  {phase:'DIY',     n:'Signage & décor elements',         c:'diy', d:'2028-03-01'},
+  {phase:'DIY',     n:'All signage & décor — print',      c:'diy', d:'2028-05-01'},
+  {phase:'DIY',     n:'Assemble programs & favors',       c:'diy', d:'2028-07-15'},
+  // Wedding day
+  {phase:'Wedding', n:'⭐ WEDDING DAY',                   c:'con', d:'2028-08-04',m:true,wd:true},
 ];
 
+const CC2={rsvp:'#1A6B6B',diy:'#B8860B',con:'#9E7B8A'};
+const CB2={rsvp:'br',diy:'bd',con:'bc'};
+const CL2={rsvp:'RSVP/Admin',diy:'DIY',con:'Book/Confirm'};
+
 // ── GANTT BUILD ───────────────────────────────────────────────
-function buildStaticGantt() {
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = '';
-  const tp = pp(TODAY);
+function buildGantt(){
+  const tbody=document.getElementById('tbody');
+  tbody.innerHTML='';
+  const tp=pp(TODAY);
 
   // ruler
-  const rr = document.createElement('tr'); rr.className='rr';
-  rr.innerHTML = '<td colspan="5"><div class="ri" id="ruler"></div></td>';
+  const rr=document.createElement('tr');rr.className='rr';
+  rr.innerHTML='<td colspan="5"><div class="ri" id="ruler"></div></td>';
   tbody.appendChild(rr);
-  setTimeout(() => {
-    const ruler = document.getElementById('ruler'); if(!ruler) return;
-    let d = new Date(T0);
-    while(d < T1) {
-      const p=pp(d), isYr=d.getMonth()===0||d.getTime()===T0.getTime(), isQ=d.getMonth()%3===0;
-      if(isYr||isQ) {
-        const bal = getSavings(d);
-        const wrap = document.createElement('div');
-        wrap.style.cssText = `position:absolute;left:${p}%;transform:translateX(-50%);text-align:center;white-space:nowrap;top:2px`;
-        const lbl = document.createElement('div');
-        lbl.style.cssText = `font-size:.58rem;color:${isYr?'#6B2737':'#9E7B8A'};font-weight:${isYr?600:400};line-height:1.2`;
-        lbl.textContent = isYr ? d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}) : d.toLocaleDateString('en-US',{month:'short'});
-        const amt = document.createElement('div');
-        amt.style.cssText = `font-size:.56rem;color:#1A6B6B;font-weight:600;margin-top:1px`;
-        amt.textContent = '$'+Math.round(Math.max(0,bal)/1000)+'k';
-        wrap.appendChild(lbl); wrap.appendChild(amt);
+  setTimeout(()=>{
+    const ruler=document.getElementById('ruler');if(!ruler)return;
+    let d=new Date(T0);
+    while(d<T1){
+      const p=pp(d),isYr=d.getMonth()===0||d.getTime()===T0.getTime(),isQ=d.getMonth()%3===0;
+      if(isYr||isQ){
+        const bal=getSavings(d);
+        const wrap=document.createElement('div');
+        wrap.style.cssText=`position:absolute;left:${p}%;transform:translateX(-50%);text-align:center;white-space:nowrap;top:2px`;
+        const lbl=document.createElement('div');
+        lbl.style.cssText=`font-size:.58rem;color:${isYr?'#6B2737':'#9E7B8A'};font-weight:${isYr?600:400};line-height:1.2`;
+        lbl.textContent=isYr?d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}):d.toLocaleDateString('en-US',{month:'short'});
+        const amt=document.createElement('div');
+        amt.style.cssText=`font-size:.56rem;color:#1A6B6B;font-weight:600;margin-top:1px`;
+        amt.textContent='$'+Math.round(Math.max(0,bal)/1000)+'k';
+        wrap.appendChild(lbl);wrap.appendChild(amt);
         ruler.appendChild(wrap);
       }
-      d = new Date(d.getFullYear(), d.getMonth()+1, 1);
+      d=new Date(d.getFullYear(),d.getMonth()+1,1);
     }
-  }, 0);
+  },0);
 
-  // vendor spans section — built from sheetVendors
-  buildGanttVendorRows(tbody, tp);
+  // ── VENDOR SPANS SECTION ──────────────────────────────────
+  const vphr=document.createElement('tr');vphr.className='ph-row';vphr.dataset.phase='vendor';
+  vphr.innerHTML='<td colspan="5">VENDOR PAYMENT SPANS — enter amount paid to track spending</td>';
+  tbody.appendChild(vphr);
 
-  // task phases
-  PHASES.forEach(phase => {
-    const ph = document.createElement('tr'); ph.className='ph-row'; ph.dataset.phase=phase.l;
-    ph.innerHTML = `<td colspan="5">${phase.l.toUpperCase()}</td>`;
+  sheetVendors.forEach(v=>{
+    const total=Number(v.Total)||0;
+    const paidAmt=Number(statuses[venKey(v.Vendor)])||0;
+    const remaining=Math.max(0,total-paidAmt);
+    const paidPct=total>0?Math.min(100,(paidAmt/total)*100):0;
+
+    // determine bar start/end from sheet
+    const startMk=v['P1 Month']||v['Deposit Month']||'2026-01';
+    const endMk=v['Final Month']||'2028-07';
+    const sp=pp(pd(startMk)),ep=pp(pd(endMk)),w=Math.max(ep-sp,0.8);
+    const paidW=(paidPct/100)*w;
+
+    const inp_id=`paid-${v.Vendor.replace(/\s+/g,'_')}`;
+    const btn_id=`btn-${v.Vendor.replace(/\s+/g,'_')}`;
+
+    const tr=document.createElement('tr');
+    tr.className='tr';tr.dataset.cat='ven';tr.dataset.phase='vendor';
+    tr.dataset.search=(v.Vendor||'').toLowerCase();
+    tr.innerHTML=`
+      <td><div class="ven-name">${v.Vendor}</div></td>
+      <td style="text-align:center"><span class="badge bv">${v.Category||'Vendor'}</span></td>
+      <td style="font-size:.72rem;color:var(--mauve);white-space:nowrap">${fs(startMk)} → ${fs(endMk)}</td>
+      <td>
+        <div class="paid-wrap">
+          <input class="paid-inp ${paidAmt>=total&&total>0?'full':paidAmt>0?'partial':''}"
+            id="${inp_id}" type="number" min="0" value="${paidAmt||''}"
+            placeholder="$0 paid"
+            oninput="onVenPaid('${v.Vendor}','${inp_id}','${btn_id}',${total})">
+          <span style="font-size:.65rem;color:var(--mauve)">of ${fmt$(total)}</span>
+          <button class="save-pill ${paidAmt>0?'show':''}" id="${btn_id}"
+            onclick="saveVenPaid('${v.Vendor}','${inp_id}','${btn_id}',${total})">Save</button>
+        </div>
+        <div style="font-size:.65rem;margin-top:3px;color:${remaining>0?'var(--pay)':'#1E6B3C'}">
+          ${remaining>0?fmt$(remaining)+' remaining':'✓ Fully paid'}
+        </div>
+      </td>
+      <td class="bc2">
+        <div class="bw">
+          <div class="tline" style="left:${tp}%"></div>
+          <div class="bar" style="left:${sp}%;width:${w}%;background:#7D5A9E;opacity:.35"
+            title="${v.Vendor} — ${fmt$(total)} total"></div>
+          <div class="bar-paid" style="left:${sp}%;width:${paidW}%"
+            title="Paid: ${fmt$(paidAmt)}"></div>
+          <span class="blbl" style="left:calc(${sp}% + 3px)">${fmt$(total)} total</span>
+        </div>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+
+  // ── NON-PAYMENT TASK PHASES ───────────────────────────────
+  const phases=[...new Set(TASKS.map(t=>t.phase))];
+  const phaseLabels={Planning:'Book & Confirm',Admin:'RSVP & Admin',DIY:'DIY & Creative',Wedding:'Wedding Week'};
+
+  phases.forEach(phase=>{
+    const ph=document.createElement('tr');ph.className='ph-row';ph.dataset.phase=phase;
+    ph.innerHTML=`<td colspan="5">${(phaseLabels[phase]||phase).toUpperCase()}</td>`;
     tbody.appendChild(ph);
 
-    phase.t.forEach((task,ti) => {
-      const key=tk(phase.l,task.n), due=pd(task.d), p=pp(due), col=CC[task.c];
-      const s=statuses[key]||'open', days=Math.round((due-TODAY)/86400000);
-      const sp=pp(ti>0?pd(phase.t[ti-1].d):T0), w=Math.max(p-sp,.5);
+    const phaseTasks=TASKS.filter(t=>t.phase===phase);
+    phaseTasks.forEach((task,ti)=>{
+      const key=tk(task.phase,task.n),due=pd(task.d),p=pp(due),col=CC2[task.c]||'#9E7B8A';
+      const s=statuses[key]||'open',days=Math.round((due-TODAY)/86400000);
+      const sp2=pp(ti>0?pd(phaseTasks[ti-1].d):T0),w2=Math.max(p-sp2,.5);
 
-      const barH = task.m
-        ? `<div class="bw"><div class="tline" style="left:${tp}%"><div class="tlbl">today</div></div><div class="mstone" style="background:${col};left:calc(${p}% - 5px)"></div></div>`
-        : `<div class="bw"><div class="tline" style="left:${tp}%"></div><div class="bar" style="left:${sp}%;width:${w}%;background:${col};opacity:${task.wd?1:.7}" title="${task.n}${task.amt?' — '+fmt$(task.amt):''}"></div>${w>6?`<span class="blbl" style="left:calc(${sp}% + 3px);max-width:${w}%">${fs(task.d)}${task.amt?' · '+fmt$(task.amt):''}</span>`:''}</div>`;
+      const barH=task.m
+        ?`<div class="bw"><div class="tline" style="left:${tp}%"><div class="tlbl">today</div></div><div class="mstone" style="background:${col};left:calc(${p}% - 5px)"></div></div>`
+        :`<div class="bw"><div class="tline" style="left:${tp}%"></div><div class="bar" style="left:${sp2}%;width:${w2}%;background:${col};opacity:${task.wd?1:.65}"></div>${w2>5?`<span class="blbl" style="left:calc(${sp2}% + 3px)">${task.wd?'Wedding Day':''}</span>`:''}</div>`;
 
       const ds=days<0?'color:#C0392B;font-weight:600':days<=60?'color:#B8860B;font-weight:500':'';
       const dsuf=days<0?` <span style="font-size:.62rem">(${Math.abs(days)}d overdue)</span>`:days===0?' <span style="font-size:.62rem;color:#C0392B">(TODAY)</span>':'';
       const opts=['open','in-progress','done'].map(v=>`<option value="${v}" ${s===v?'selected':''}>${v==='open'?'⬜ Open':v==='in-progress'?'🔄 In Progress':'✅ Done'}</option>`).join('');
 
-      const tr = document.createElement('tr');
-      tr.className='tr'; tr.dataset.cat=task.c; tr.dataset.phase=phase.l; tr.dataset.search=task.n.toLowerCase();
+      const tr=document.createElement('tr');
+      tr.className='tr';tr.dataset.cat=task.c;tr.dataset.phase=phase;tr.dataset.search=task.n.toLowerCase();
       tr.innerHTML=`
         <td><div class="tn${task.wd?' wd':''}">${task.n}</div></td>
-        <td style="text-align:center"><span class="badge ${CB[task.c]}">${CL[task.c]}</span></td>
+        <td style="text-align:center"><span class="badge ${CB2[task.c]||'bc'}">${CL2[task.c]||'Task'}</span></td>
         <td style="font-size:.76rem;white-space:nowrap;${ds}">${fd(task.d)}${dsuf}</td>
-        <td style="text-align:center"><select class="ss ${s==='done'?'done':s==='in-progress'?'inp':''}" data-key="${key}" onchange="onSel(this,'${key}')">${opts}</select></td>
+        <td style="text-align:center">
+          <select class="ss ${s==='done'?'done':s==='in-progress'?'inp':''}" data-key="${key}" onchange="onStatus(this,'${key}')">
+            ${opts}
+          </select>
+        </td>
         <td class="bc2">${barH}</td>`;
       tbody.appendChild(tr);
     });
   });
 }
 
-// Vendor span rows driven from sheetVendors
-function buildGanttVendorRows(tbody, tp) {
-  tbody = tbody || document.getElementById('tbody');
-  tp = tp !== undefined ? tp : pp(TODAY);
-
-  // Remove existing vendor rows
-  document.querySelectorAll('.vendor-gantt-section').forEach(el => el.remove());
-
-  if (!sheetVendors.length) return;
-
-  const vphr = document.createElement('tr');
-  vphr.className = 'ph-row vendor-gantt-section'; vphr.dataset.phase='vendor';
-  vphr.innerHTML = '<td colspan="5">VENDOR PAYMENT SPANS</td>';
-
-  // Insert after ruler row
-  const ruler = document.getElementById('ruler');
-  if (ruler) {
-    const rulerRow = ruler.closest('tr');
-    rulerRow.after(vphr);
-    let prev = vphr;
-    sheetVendors.forEach(v => {
-      const startMk = v['P1 Month'] || v['Deposit Month'] || '2026-01';
-      const endMk   = v['Final Month'] || '2028-07';
-      const sp = pp(pd(startMk)), ep = pp(pd(endMk)), w = Math.max(ep-sp, 0.8);
-      const total = Number(v.Total)||0;
-      const dep   = Number(v.Deposit)||0;
-      const p1    = Number(v.Partial1)||0;
-      const p2    = Number(v.Partial2)||0;
-      const fin   = total - dep - p1 - p2;
-
-      const tr = document.createElement('tr');
-      tr.className = 'tr vendor-gantt-section'; tr.dataset.cat='ven'; tr.dataset.phase='vendor';
-      tr.dataset.search = (v.Vendor||'').toLowerCase();
-      tr.innerHTML = `
-        <td><div class="tn" style="color:#4A1C6B">${v.Vendor}</div></td>
-        <td style="text-align:center"><span class="badge bv">${v.Category||'Vendor'}</span></td>
-        <td style="font-size:.72rem;color:var(--mauve)">${startMk} → ${endMk}</td>
-        <td style="font-size:.7rem;color:var(--ven)">dep ${fmt$(dep)}${p1?' · p1 '+fmt$(p1):''}${p2?' · p2 '+fmt$(p2):''}</td>
-        <td class="bc2">
-          <div class="bw">
-            <div class="tline" style="left:${tp}%"></div>
-            <div class="bar" style="left:${sp}%;width:${w}%;background:#7D5A9E;opacity:.5" title="${v.Vendor} — ${fmt$(total)} total"></div>
-            ${w>6?`<span class="blbl" style="left:calc(${sp}% + 3px);max-width:${w}%">${fmt$(total)} total</span>`:''}
-          </div>
-        </td>`;
-      prev.after(tr);
-      prev = tr;
-    });
-  }
+// ── VENDOR PAYMENT HANDLERS ───────────────────────────────────
+function onVenPaid(vendor, inpId, btnId, total){
+  const val=Number(document.getElementById(inpId).value)||0;
+  const inp=document.getElementById(inpId);
+  inp.className='paid-inp '+(val>=total&&total>0?'full':val>0?'partial':'');
+  document.getElementById(btnId).classList.add('show');
 }
 
-// ── EDITABLE VENDOR TABLE ─────────────────────────────────────
-function buildVendorTable() {
-  const tb = document.getElementById('vendor-tbody');
-  tb.innerHTML = '';
-  let grandTotal = 0;
+async function saveVenPaid(vendor, inpId, btnId, total){
+  const val=Number(document.getElementById(inpId).value)||0;
+  statuses[venKey(vendor)]=val;
+  const btn=document.getElementById(btnId);
+  btn.textContent='Saving…';
 
-  sheetVendors.forEach((v,vi) => {
-    const total = Number(v.Total)||0;
-    grandTotal += total;
-    const dep  = Number(v.Deposit)||0;
-    const p1   = Number(v.Partial1)||0;
-    const p2   = Number(v.Partial2)||0;
-    const fin  = total - dep - p1 - p2;
+  await post({action:'setStatus', taskKey:venKey(vendor), status:String(val)});
 
-    const tr = document.createElement('tr');
-    tr.dataset.vendor = v.Vendor;
-    tr.innerHTML = `
+  btn.textContent='✓ Saved';
+  setTimeout(()=>{btn.textContent='Save';btn.classList.remove('show');},2000);
+
+  // Update remaining label
+  const remaining=Math.max(0,total-val);
+  const row=btn.closest('tr');
+  const remDiv=row.querySelector('td:nth-child(4) div:last-child');
+  if(remDiv) remDiv.innerHTML=remaining>0?`${fmt$(remaining)} remaining`:'✓ Fully paid';
+  remDiv.style.color=remaining>0?'var(--pay)':'#1E6B3C';
+
+  // Update paid bar width
+  const paidPct=total>0?Math.min(100,(val/total)*100):0;
+  const bw=row.querySelector('.bw');
+  if(bw){
+    const totalBar=bw.querySelector('.bar');
+    const paidBar=bw.querySelector('.bar-paid');
+    if(totalBar&&paidBar){
+      const tw=parseFloat(totalBar.style.width);
+      paidBar.style.width=(paidPct/100*tw)+'%';
+    }
+  }
+
+  updateStats();
+  buildVendorBreakdown();
+  if(document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
+}
+
+// ── TASK STATUS ───────────────────────────────────────────────
+function onStatus(sel,key){
+  const v=sel.value;statuses[key]=v;
+  sel.className='ss '+(v==='done'?'done':v==='in-progress'?'inp':'');
+  post({action:'setStatus',taskKey:key,status:v});
+  updateStats();
+}
+
+// ── VENDOR BREAKDOWN (budget tab) ─────────────────────────────
+function buildVendorBreakdown(){
+  const tb=document.getElementById('vb-tbody');
+  tb.innerHTML='';
+  let gTotal=0,gPaid=0;
+  sheetVendors.forEach(v=>{
+    const total=Number(v.Total)||0;
+    const paid=Number(statuses[venKey(v.Vendor)])||0;
+    const remain=Math.max(0,total-paid);
+    const pct=total>0?Math.min(100,Math.round((paid/total)*100)):0;
+    gTotal+=total;gPaid+=paid;
+    tb.innerHTML+=`<tr>
       <td style="font-weight:500">${v.Vendor}</td>
       <td style="font-size:.72rem;color:var(--mauve)">${v.Category||''}</td>
-      <td class="amt-col">${editableCell(v.Vendor,'Deposit',dep,'amt')}</td>
-      <td class="month-col">${editableCell(v.Vendor,'Deposit Month',v['Deposit Month']||'','month')}</td>
-      <td class="amt-col">${editableCell(v.Vendor,'Partial1',p1||'','amt')}</td>
-      <td class="month-col">${editableCell(v.Vendor,'P1 Month',v['P1 Month']||'','month')}</td>
-      <td class="amt-col">${editableCell(v.Vendor,'Partial2',p2||'','amt')}</td>
-      <td class="month-col">${editableCell(v.Vendor,'P2 Month',v['P2 Month']||'','month')}</td>
-      <td class="amt-col" style="color:var(--pay);font-weight:600">${fmt$(fin)}</td>
-      <td class="month-col">${editableCell(v.Vendor,'Final Month',v['Final Month']||'','month')}</td>
-      <td class="amt-col" style="font-weight:700">${fmt$(total)}</td>
-      <td><button class="save-btn" id="savebtn-${vi}" onclick="saveVendorRow(${vi})">Save</button></td>`;
-    tb.appendChild(tr);
+      <td class="ar">${fmt$(total)}</td>
+      <td class="ar" style="color:#1E6B3C">${paid?fmt$(paid):'—'}</td>
+      <td class="ar" style="color:${remain?'var(--pay)':'#1E6B3C'}">${remain?fmt$(remain):'✓ Paid'}</td>
+      <td><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div></td>
+    </tr>`;
   });
-
-  tb.innerHTML += `<tr class="tot-row">
-    <td colspan="10" style="font-size:.75rem;letter-spacing:.06em">TOTAL PLANNED</td>
-    <td class="amt-col" style="color:var(--burg);font-weight:700">${fmt$(grandTotal)}</td>
+  tb.innerHTML+=`<tr style="background:var(--lt)">
+    <td colspan="2" style="font-weight:600;font-size:.75rem;letter-spacing:.06em">TOTAL</td>
+    <td class="ar" style="font-weight:700">${fmt$(gTotal)}</td>
+    <td class="ar" style="font-weight:700;color:#1E6B3C">${fmt$(gPaid)}</td>
+    <td class="ar" style="font-weight:700;color:var(--pay)">${fmt$(gTotal-gPaid)}</td>
     <td></td>
   </tr>`;
-
-  // Show save button when any input in row changes
-  document.querySelectorAll('.editable').forEach(inp => {
-    inp.addEventListener('input', () => {
-      const vi = inp.dataset.vi;
-      const btn = document.getElementById('savebtn-'+vi);
-      if (btn) btn.classList.add('show');
-    });
-  });
-}
-
-function editableCell(vendor, field, value, type) {
-  const vi = sheetVendors.findIndex(v => v.Vendor === vendor);
-  const display = type==='amt' ? (value?'$'+Math.round(Number(value)).toLocaleString():'') : (value||'');
-  return `<input class="editable" data-vendor="${vendor}" data-field="${field}" data-vi="${vi}" data-type="${type}" value="${display}" placeholder="${type==='month'?'YYYY-MM':'$0'}">`;
-}
-
-async function saveVendorRow(vi) {
-  const btn = document.getElementById('savebtn-'+vi);
-  const vendor = sheetVendors[vi].Vendor;
-  const inputs = document.querySelectorAll(`.editable[data-vi="${vi}"]`);
-  const data = { Vendor: vendor };
-
-  inputs.forEach(inp => {
-    let val = inp.value.trim().replace(/[$,]/g,'');
-    if (inp.dataset.type === 'amt') val = Number(val) || 0;
-    data[inp.dataset.field] = val;
-    // Update local sheetVendors
-    sheetVendors[vi][inp.dataset.field] = val;
-  });
-
-  btn.textContent = 'Saving…'; btn.classList.add('show');
-  await post({ action:'updateVendor', data });
-  btn.textContent = '✓ Saved'; btn.classList.add('saved');
-  setTimeout(() => { btn.textContent='Save'; btn.classList.remove('show','saved'); }, 2000);
-
-  // Refresh chart and gantt
-  buildGanttVendorRows();
-  buildBudgetChart();
-  updateStats();
-}
-
-// ── SAVINGS GRID ──────────────────────────────────────────────
-function buildSavingsGrid() {
-  const grid = document.getElementById('savings-grid');
-  grid.innerHTML = '';
-  Object.entries(sheetSavings).sort().forEach(([mk, amt]) => {
-    const cell = document.createElement('div'); cell.className = 'sav-cell';
-    cell.innerHTML = `<div class="sav-month">${mk}</div>
-      <input class="sav-input" data-month="${mk}" value="${amt}" type="number" min="0">`;
-    grid.appendChild(cell);
-  });
-}
-
-async function saveAllSavings() {
-  const inputs = document.querySelectorAll('.sav-input');
-  const updates = [];
-  inputs.forEach(inp => {
-    const month = inp.dataset.month, amount = Number(inp.value)||0;
-    if (sheetSavings[month] !== amount) {
-      sheetSavings[month] = amount;
-      updates.push(post({ action:'updateSavings', month, amount }));
-    }
-  });
-  await Promise.all(updates);
-  setSS('ok', 'Savings saved · ' + new Date().toLocaleTimeString());
-  buildBudgetChart();
-  buildStaticGantt();
-  updateStats();
 }
 
 // ── BUDGET CHART ──────────────────────────────────────────────
-function buildBudgetChart() {
-  const rb = buildRunningBalance();
-  const labels=[], balLine=[], payBars=[], paidBars=[];
+function buildBudgetChart(){
+  buildVendorBreakdown();
+  const rb=buildRunningBalance();
+  const labels=[],balLine=[],payBars=[],paidBars=[];
 
-  // Payments by month from Payment_Feed
   const payByMonth={};
-  sheetPayments.forEach(p => {
-    if(p.Amount && p.Month) payByMonth[p.Month]=(payByMonth[p.Month]||0)+Number(p.Amount);
+  sheetPayments.forEach(p=>{
+    if(p.Amount&&p.Month) payByMonth[p.Month]=(payByMonth[p.Month]||0)+Number(p.Amount);
   });
 
-  // Paid by month — from Payment_Feed where Paid=YES
+  // Spread paid amounts across months proportionally from Payment_Feed
   const paidByMonth={};
-  sheetPayments
-    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
-    .forEach(p => {
-      if(p.Month && p.Amount)
-        paidByMonth[p.Month]=(paidByMonth[p.Month]||0)+Number(p.Amount);
+  sheetVendors.forEach(v=>{
+    const paid=Number(statuses[venKey(v.Vendor)])||0;
+    if(!paid) return;
+    // Find this vendor's payments in Payment_Feed
+    const vPayments=sheetPayments.filter(p=>p.Vendor&&p.Vendor.toLowerCase().includes(v.Vendor.toLowerCase()));
+    let remaining=paid;
+    vPayments.forEach(p=>{
+      if(remaining<=0) return;
+      const amt=Math.min(Number(p.Amount)||0,remaining);
+      if(amt>0&&p.Month){
+        paidByMonth[p.Month]=(paidByMonth[p.Month]||0)+amt;
+        remaining-=amt;
+      }
     });
+  });
 
-  let d = new Date(2026,0,1);
-  const end = new Date(2028,7,31);
+  let d=new Date(2026,0,1);
+  const end=new Date(2028,7,31);
   while(d<=end){
     const mk=monthKey(d);
     labels.push(d.toLocaleDateString('en-US',{month:'short',year:'2-digit'}));
-    balLine.push(rb[mk]!=null ? Math.round(rb[mk]) : null);
+    balLine.push(rb[mk]!=null?Math.round(rb[mk]):null);
     payBars.push(payByMonth[mk]||null);
     paidBars.push(paidByMonth[mk]||null);
     d=new Date(d.getFullYear(),d.getMonth()+1,1);
   }
 
-  // Summary cards
-  const totalPlanned = sheetVendors.reduce((a,v)=>a+(Number(v.Total)||0),0);
-  const totalPaid    = sheetPayments
-    .filter(p => String(p.Paid||'').toUpperCase()==='YES')
-    .reduce((s,p)=>s+(Number(p.Amount)||0),0);
-  const savNow       = getSavings(TODAY);
+  const totalPlanned=sheetVendors.reduce((a,v)=>a+(Number(v.Total)||0),0);
+  const totalPaid=getTotalPaid();
+  const savNow=getSavings(TODAY);
   document.getElementById('bcards').innerHTML=`
-    <div class="bcard"><div class="bcard-label">Total planned spend</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
-    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${savNow<0?'red':'teal'}">${fmt$(savNow)}</div></div>
+    <div class="bcard"><div class="bcard-label">Total planned</div><div class="bcard-val">${fmt$(totalPlanned)}</div></div>
     <div class="bcard"><div class="bcard-label">Paid so far</div><div class="bcard-val green">${fmt$(totalPaid)}</div></div>
-    <div class="bcard"><div class="bcard-label">Jul 2028 balance</div><div class="bcard-val ${(rb['2028-07']||0)<0?'red':'green'}">${fmt$(rb['2028-07']||0)}</div></div>`;
+    <div class="bcard"><div class="bcard-label">Still owed</div><div class="bcard-val red">${fmt$(Math.max(0,totalPlanned-totalPaid))}</div></div>
+    <div class="bcard"><div class="bcard-label">Available now</div><div class="bcard-val ${savNow<0?'red':'teal'}">${fmt$(savNow)}</div></div>`;
 
   if(budgetChart){budgetChart.destroy();budgetChart=null;}
-  budgetChart = new Chart(document.getElementById('budgetChart'),{
+  budgetChart=new Chart(document.getElementById('budgetChart'),{
     type:'bar',
     data:{labels,datasets:[
       {label:'Available balance',data:balLine,type:'line',borderColor:'#1A6B6B',backgroundColor:'rgba(26,107,107,0.07)',borderWidth:2,pointRadius:1.5,pointHoverRadius:4,tension:0.3,fill:true,yAxisID:'y',order:1},
@@ -807,10 +731,7 @@ function buildBudgetChart() {
     options:{
       responsive:true,maintainAspectRatio:false,
       interaction:{mode:'index',intersect:false},
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{label:ctx=>ctx.raw===null?null:ctx.dataset.label+': $'+Math.round(ctx.raw).toLocaleString()}}
-      },
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw===null?null:ctx.dataset.label+': $'+Math.round(ctx.raw).toLocaleString()}}},
       scales:{
         x:{ticks:{font:{size:9},color:'#9E7B8A',maxRotation:45,autoSkip:true,maxTicksLimit:18},grid:{color:'rgba(196,180,154,0.15)'}},
         y:{ticks:{font:{size:9},color:'#9E7B8A',callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'rgba(196,180,154,0.15)'}}
@@ -819,25 +740,46 @@ function buildBudgetChart() {
   });
 }
 
-// ── STATUS ────────────────────────────────────────────────────
-function onSel(sel, key) {
-  const v = sel.value; statuses[key]=v;
-  sel.className='ss saving'; sel.disabled=true;
-  post({action:'setStatus',taskKey:key,status:v}).finally(()=>{
-    sel.className='ss '+(v==='done'?'done':v==='in-progress'?'inp':'');
-    sel.disabled=false; updateStats();
-    if(document.getElementById('panel-budget').classList.contains('on')) buildBudgetChart();
+// ── SAVINGS GRID ──────────────────────────────────────────────
+function buildSavingsGrid(){
+  const grid=document.getElementById('savings-grid');
+  grid.innerHTML='';
+  Object.entries(sheetSavings).sort().forEach(([mk,amt])=>{
+    const cell=document.createElement('div');cell.className='sav-cell';
+    cell.innerHTML=`<div class="sav-month">${mk}</div>
+      <input class="sav-input" data-month="${mk}" value="${amt}" type="number" min="0">`;
+    grid.appendChild(cell);
   });
 }
 
+async function saveAllSavings(){
+  const inputs=document.querySelectorAll('.sav-input');
+  const updates=[];
+  inputs.forEach(inp=>{
+    const month=inp.dataset.month,amount=Number(inp.value)||0;
+    if(sheetSavings[month]!==amount){
+      sheetSavings[month]=amount;
+      updates.push(post({action:'updateSavings',month,amount}));
+    }
+  });
+  await Promise.all(updates);
+  setSS('ok','Savings saved · '+new Date().toLocaleTimeString());
+  buildGantt();
+  buildBudgetChart();
+  updateStats();
+}
+
+// ── FILTER / SEARCH ───────────────────────────────────────────
 function setF(f,btn){
-  curF=f; document.querySelectorAll('.btn').forEach(b=>b.className=b.className.replace(/ on/g,''));
-  btn.className+=' on'; applyF();
+  curF=f;document.querySelectorAll('.btn').forEach(b=>b.className=b.className.replace(/ on/g,''));
+  btn.className+=' on';applyF();
 }
 function doSearch(v){curS=v.toLowerCase();applyF();}
 function applyF(){
   document.querySelectorAll('.tr').forEach(r=>{
-    r.classList.toggle('hidden',!((curF==='all'||r.dataset.cat===curF)&&(!curS||r.dataset.search.includes(curS))));
+    const catOk=curF==='all'||r.dataset.cat===curF;
+    const searchOk=!curS||r.dataset.search.includes(curS);
+    r.classList.toggle('hidden',!(catOk&&searchOk));
   });
   document.querySelectorAll('.ph-row').forEach(p=>{
     const rows=document.querySelectorAll(`.tr[data-phase="${p.dataset.phase}"]`);
